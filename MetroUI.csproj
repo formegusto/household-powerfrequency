@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Action.cs" />
     <Compile Include="Component.cs">
       <SubType>Form</SubType>
     </Compile>
