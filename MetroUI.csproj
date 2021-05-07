@@ -64,8 +64,11 @@
     <Compile Include="Component.Designer.cs">
       <DependentUpon>Component.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View.cs" />
     <EmbeddedResource Include="Component.resx">
       <DependentUpon>Component.cs</DependentUpon>
     </EmbeddedResource>

@@ -262,10 +262,12 @@
 			this.metroProgressSpinner1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.metroProgressSpinner1.Location = new System.Drawing.Point(392, 136);
+			this.metroProgressSpinner1.Enabled = false;
+			this.metroProgressSpinner1.Location = new System.Drawing.Point(405, 185);
 			this.metroProgressSpinner1.Maximum = 100;
 			this.metroProgressSpinner1.Name = "metroProgressSpinner1";
 			this.metroProgressSpinner1.Size = new System.Drawing.Size(250, 250);
+			this.metroProgressSpinner1.Spinning = false;
 			this.metroProgressSpinner1.TabIndex = 2;
 			this.metroProgressSpinner1.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.metroProgressSpinner1.UseSelectable = true;
@@ -280,6 +282,7 @@
 			this.LoadBtn.Text = "로딩 테스트";
 			this.LoadBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.LoadBtn.UseSelectable = true;
+			this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
 			// 
 			// Component
 			// 

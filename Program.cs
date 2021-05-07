@@ -16,7 +16,11 @@ namespace MetroUI
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Component());
+			Component view = new Component();
+			IModel model = new DayClusterModel();
+			IController controller = new DayClusterController(view, model);
+
+			Application.Run(view);
 		}
 	}
 }
