@@ -30,6 +30,7 @@ namespace MetroUI
 		}
 		public void Dispatch(string action, Dictionary<string, dynamic> payload = null)
 		{
+			Console.WriteLine(string.Format("[View -> Model] {0}", action));
 			switch(action)
 			{
 				case ACTION.LOAD_EXCEL:

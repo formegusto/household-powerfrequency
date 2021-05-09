@@ -32,12 +32,16 @@ namespace MetroUI
 		public event ModelHandler<DayClusterModel> changed;
 		public void Attach(IModelObserver imo)
 		{
-
+			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);
 		}
 		public void LoadExcel()
 		{
-			Thread.Sleep(5000);
-			this.changed(this, new ModelEventArgs(ACTION.LOAD_EXCEL_SUCCESS));
+			Task.Run(() =>
+			{
+				for (int i = 0; i < 30000; i++)
+					Console.WriteLine(i);
+				this.changed.Invoke(this, new ModelEventArgs(ACTION.LOAD_EXCEL_SUCCESS));
+			});
 		}
 	}
 }

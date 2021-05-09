@@ -29,8 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.Header = new MetroFramework.Controls.MetroPanel();
-			this.Footer = new MetroFramework.Controls.MetroPanel();
-			this.Body = new MetroFramework.Controls.MetroPanel();
 			this.DayTabs = new MetroFramework.Controls.MetroTabControl();
 			this.Sun = new MetroFramework.Controls.MetroTabPage();
 			this.Mon = new MetroFramework.Controls.MetroTabPage();
@@ -39,13 +37,15 @@
 			this.Thu = new MetroFramework.Controls.MetroTabPage();
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
 			this.Sat = new MetroFramework.Controls.MetroTabPage();
-			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
-			this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
+			this.Footer = new MetroFramework.Controls.MetroPanel();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
+			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
+			this.Body = new MetroFramework.Controls.MetroPanel();
+			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.Header.SuspendLayout();
+			this.DayTabs.SuspendLayout();
 			this.Footer.SuspendLayout();
 			this.Body.SuspendLayout();
-			this.DayTabs.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Header
@@ -63,39 +63,6 @@
 			this.Header.VerticalScrollbarBarColor = true;
 			this.Header.VerticalScrollbarHighlightOnWheel = false;
 			this.Header.VerticalScrollbarSize = 10;
-			// 
-			// Footer
-			// 
-			this.Footer.Controls.Add(this.LoadBtn);
-			this.Footer.Controls.Add(this.UIDSearch);
-			this.Footer.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.Footer.HorizontalScrollbarBarColor = true;
-			this.Footer.HorizontalScrollbarHighlightOnWheel = false;
-			this.Footer.HorizontalScrollbarSize = 10;
-			this.Footer.Location = new System.Drawing.Point(20, 730);
-			this.Footer.Name = "Footer";
-			this.Footer.Size = new System.Drawing.Size(1060, 50);
-			this.Footer.TabIndex = 2;
-			this.Footer.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Footer.VerticalScrollbarBarColor = true;
-			this.Footer.VerticalScrollbarHighlightOnWheel = false;
-			this.Footer.VerticalScrollbarSize = 10;
-			// 
-			// Body
-			// 
-			this.Body.Controls.Add(this.metroProgressSpinner1);
-			this.Body.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Body.HorizontalScrollbarBarColor = true;
-			this.Body.HorizontalScrollbarHighlightOnWheel = false;
-			this.Body.HorizontalScrollbarSize = 10;
-			this.Body.Location = new System.Drawing.Point(20, 110);
-			this.Body.Name = "Body";
-			this.Body.Size = new System.Drawing.Size(1060, 620);
-			this.Body.TabIndex = 3;
-			this.Body.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Body.VerticalScrollbarBarColor = true;
-			this.Body.VerticalScrollbarHighlightOnWheel = false;
-			this.Body.VerticalScrollbarSize = 10;
 			// 
 			// DayTabs
 			// 
@@ -222,6 +189,35 @@
 			this.Sat.VerticalScrollbarHighlightOnWheel = false;
 			this.Sat.VerticalScrollbarSize = 10;
 			// 
+			// Footer
+			// 
+			this.Footer.Controls.Add(this.LoadBtn);
+			this.Footer.Controls.Add(this.UIDSearch);
+			this.Footer.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.Footer.HorizontalScrollbarBarColor = true;
+			this.Footer.HorizontalScrollbarHighlightOnWheel = false;
+			this.Footer.HorizontalScrollbarSize = 10;
+			this.Footer.Location = new System.Drawing.Point(20, 730);
+			this.Footer.Name = "Footer";
+			this.Footer.Size = new System.Drawing.Size(1060, 50);
+			this.Footer.TabIndex = 2;
+			this.Footer.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Footer.VerticalScrollbarBarColor = true;
+			this.Footer.VerticalScrollbarHighlightOnWheel = false;
+			this.Footer.VerticalScrollbarSize = 10;
+			// 
+			// LoadBtn
+			// 
+			this.LoadBtn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.LoadBtn.Location = new System.Drawing.Point(900, 0);
+			this.LoadBtn.Name = "LoadBtn";
+			this.LoadBtn.Size = new System.Drawing.Size(160, 50);
+			this.LoadBtn.TabIndex = 3;
+			this.LoadBtn.Text = "로딩 테스트";
+			this.LoadBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.LoadBtn.UseSelectable = true;
+			this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+			// 
 			// UIDSearch
 			// 
 			// 
@@ -257,32 +253,35 @@
 			this.UIDSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
 			this.UIDSearch.WaterMarkFont = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			// 
-			// metroProgressSpinner1
+			// Body
 			// 
-			this.metroProgressSpinner1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.Body.Controls.Add(this.Spinner);
+			this.Body.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Body.HorizontalScrollbarBarColor = true;
+			this.Body.HorizontalScrollbarHighlightOnWheel = false;
+			this.Body.HorizontalScrollbarSize = 10;
+			this.Body.Location = new System.Drawing.Point(20, 110);
+			this.Body.Name = "Body";
+			this.Body.Size = new System.Drawing.Size(1060, 620);
+			this.Body.TabIndex = 3;
+			this.Body.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Body.VerticalScrollbarBarColor = true;
+			this.Body.VerticalScrollbarHighlightOnWheel = false;
+			this.Body.VerticalScrollbarSize = 10;
+			// 
+			// Spinner
+			// 
+			this.Spinner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.metroProgressSpinner1.Enabled = false;
-			this.metroProgressSpinner1.Location = new System.Drawing.Point(405, 185);
-			this.metroProgressSpinner1.Maximum = 100;
-			this.metroProgressSpinner1.Name = "metroProgressSpinner1";
-			this.metroProgressSpinner1.Size = new System.Drawing.Size(250, 250);
-			this.metroProgressSpinner1.Spinning = false;
-			this.metroProgressSpinner1.TabIndex = 2;
-			this.metroProgressSpinner1.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroProgressSpinner1.UseSelectable = true;
-			// 
-			// LoadBtn
-			// 
-			this.LoadBtn.Dock = System.Windows.Forms.DockStyle.Right;
-			this.LoadBtn.Location = new System.Drawing.Point(900, 0);
-			this.LoadBtn.Name = "LoadBtn";
-			this.LoadBtn.Size = new System.Drawing.Size(160, 50);
-			this.LoadBtn.TabIndex = 3;
-			this.LoadBtn.Text = "로딩 테스트";
-			this.LoadBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.LoadBtn.UseSelectable = true;
-			this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+			this.Spinner.Location = new System.Drawing.Point(405, 185);
+			this.Spinner.Maximum = 100;
+			this.Spinner.Name = "Spinner";
+			this.Spinner.Size = new System.Drawing.Size(250, 250);
+			this.Spinner.Spinning = false;
+			this.Spinner.TabIndex = 2;
+			this.Spinner.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Spinner.UseSelectable = true;
 			// 
 			// Component
 			// 
@@ -298,9 +297,9 @@
 			this.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Load += new System.EventHandler(this.Component_Load);
 			this.Header.ResumeLayout(false);
+			this.DayTabs.ResumeLayout(false);
 			this.Footer.ResumeLayout(false);
 			this.Body.ResumeLayout(false);
-			this.DayTabs.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -319,7 +318,7 @@
 		private MetroFramework.Controls.MetroTabPage Fri;
 		private MetroFramework.Controls.MetroTabPage Sat;
 		private MetroFramework.Controls.MetroTextBox UIDSearch;
-		private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
+		private MetroFramework.Controls.MetroProgressSpinner Spinner;
 		private MetroFramework.Controls.MetroButton LoadBtn;
 	}
 }

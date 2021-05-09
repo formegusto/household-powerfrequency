@@ -26,9 +26,11 @@ namespace MetroUI
 		}
 		public void ModelNotify(IModel model, ModelEventArgs e)
 		{
+			Console.WriteLine(string.Format("[Model -> View] {0}", e.action));
 			switch(e.action)
 			{
 				case ACTION.LOAD_EXCEL_SUCCESS:
+					this.Spinner.Spinning = false;
 					break;
 				default:
 					break;
@@ -36,19 +38,11 @@ namespace MetroUI
 		}
 		private void Component_Load(object sender, EventArgs e)
 		{
-			PrivateFontCollection privateFonts = new PrivateFontCollection();
-
-			string path = @"C:\Users\ykpark\source\repos\MetroUI\Resource\Fonts\Montserrat-SemiBold.ttf";
-			privateFonts.AddFontFile(path);
-			Font font = new Font(privateFonts.Families[0], 24f);
-
-			this.Sun.Font = font; this.Mon.Font = font; this.Tue.Font = font;
-			this.Wed.Font = font; this.Thu.Font = font; this.Fri.Font = font; this.Sat.Font = font;
 		}
 
 		private void LoadBtn_Click(object sender, EventArgs e)
 		{
-
+			this.Spinner.Spinning = true;
 			this.controller.Dispatch(ACTION.LOAD_EXCEL);
 		}
 	}
