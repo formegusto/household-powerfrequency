@@ -255,7 +255,7 @@
 			// 
 			// Body
 			// 
-			this.Body.Controls.Add(this.Spinner);
+			// this.Body.Controls.Add(this.Spinner);
 			this.Body.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Body.HorizontalScrollbarBarColor = true;
 			this.Body.HorizontalScrollbarHighlightOnWheel = false;
@@ -278,7 +278,6 @@
 			this.Spinner.Maximum = 100;
 			this.Spinner.Name = "Spinner";
 			this.Spinner.Size = new System.Drawing.Size(250, 250);
-			this.Spinner.Spinning = false;
 			this.Spinner.TabIndex = 2;
 			this.Spinner.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Spinner.UseSelectable = true;

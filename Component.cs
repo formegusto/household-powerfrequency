@@ -30,7 +30,7 @@ namespace MetroUI
 			switch(e.action)
 			{
 				case ACTION.LOAD_EXCEL_SUCCESS:
-					this.Spinner.Spinning = false;
+					this.Body.Controls.Clear();
 					break;
 				default:
 					break;
@@ -42,7 +42,7 @@ namespace MetroUI
 
 		private void LoadBtn_Click(object sender, EventArgs e)
 		{
-			this.Spinner.Spinning = true;
+			this.Body.Controls.Add(this.Spinner);
 			this.controller.Dispatch(ACTION.LOAD_EXCEL);
 		}
 	}

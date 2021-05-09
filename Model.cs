@@ -34,14 +34,14 @@ namespace MetroUI
 		{
 			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);
 		}
-		public void LoadExcel()
+		public async void LoadExcel()
 		{
-			Task.Run(() =>
+			await Task.Run(() =>
 			{
 				for (int i = 0; i < 30000; i++)
 					Console.WriteLine(i);
-				this.changed.Invoke(this, new ModelEventArgs(ACTION.LOAD_EXCEL_SUCCESS));
 			});
+			this.changed.Invoke(this, new ModelEventArgs(ACTION.LOAD_EXCEL_SUCCESS));
 		}
 	}
 }
