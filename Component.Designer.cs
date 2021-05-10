@@ -41,14 +41,12 @@
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
 			this.Body = new MetroFramework.Controls.MetroPanel();
-			this.ChartTable = new System.Windows.Forms.TableLayoutPanel();
+			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
-			this.Chart_3 = new LiveCharts.WinForms.CartesianChart();
 			this.Header.SuspendLayout();
 			this.DayTabs.SuspendLayout();
 			this.Footer.SuspendLayout();
 			this.Body.SuspendLayout();
-			this.ChartTable.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Header
@@ -218,7 +216,7 @@
 			this.LoadBtn.Name = "LoadBtn";
 			this.LoadBtn.Size = new System.Drawing.Size(160, 30);
 			this.LoadBtn.TabIndex = 3;
-			this.LoadBtn.Text = "로딩 테스트";
+			this.LoadBtn.Text = "Excel Load";
 			this.LoadBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.LoadBtn.UseSelectable = true;
 			this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
@@ -229,7 +227,7 @@
 			// 
 			// 
 			this.UIDSearch.CustomButton.Image = null;
-			this.UIDSearch.CustomButton.Location = new System.Drawing.Point(472, 2);
+			this.UIDSearch.CustomButton.Location = new System.Drawing.Point(1032, 2);
 			this.UIDSearch.CustomButton.Name = "";
 			this.UIDSearch.CustomButton.Size = new System.Drawing.Size(25, 25);
 			this.UIDSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -237,7 +235,7 @@
 			this.UIDSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
 			this.UIDSearch.CustomButton.UseSelectable = true;
 			this.UIDSearch.CustomButton.Visible = false;
-			this.UIDSearch.Dock = System.Windows.Forms.DockStyle.Left;
+			this.UIDSearch.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.UIDSearch.Lines = new string[0];
 			this.UIDSearch.Location = new System.Drawing.Point(0, 10);
 			this.UIDSearch.MaxLength = 32767;
@@ -249,9 +247,8 @@
 			this.UIDSearch.SelectionLength = 0;
 			this.UIDSearch.SelectionStart = 0;
 			this.UIDSearch.ShortcutsEnabled = true;
-			this.UIDSearch.Size = new System.Drawing.Size(500, 30);
+			this.UIDSearch.Size = new System.Drawing.Size(1060, 30);
 			this.UIDSearch.TabIndex = 2;
-			this.UIDSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.UIDSearch.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.UIDSearch.UseSelectable = true;
 			this.UIDSearch.WaterMark = "UID";
@@ -261,7 +258,6 @@
 			// Body
 			// 
 			this.Body.AutoScroll = true;
-			this.Body.Controls.Add(this.ChartTable);
 			this.Body.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Body.HorizontalScrollbar = true;
 			this.Body.HorizontalScrollbarBarColor = false;
@@ -278,30 +274,15 @@
 			this.Body.VerticalScrollbarHighlightOnWheel = false;
 			this.Body.VerticalScrollbarSize = 0;
 			// 
-			// ChartTable
+			// Chart
 			// 
-			this.ChartTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.ChartTable.AutoSize = true;
-			this.ChartTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ChartTable.BackColor = System.Drawing.Color.Transparent;
-			this.ChartTable.ColumnCount = 7;
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1060F));
-			this.ChartTable.Controls.Add(this.Chart_3, 0, 0);
-			this.ChartTable.Location = new System.Drawing.Point(3, 0);
-			this.ChartTable.Name = "ChartTable";
-			this.ChartTable.RowCount = 1;
-			this.ChartTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.ChartTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.ChartTable.Size = new System.Drawing.Size(7420, 620);
-			this.ChartTable.TabIndex = 2;
+			this.Chart.BackColor = System.Drawing.Color.Transparent;
+			this.Chart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Chart.Location = new System.Drawing.Point(0, 0);
+			this.Chart.Name = "Chart";
+			this.Chart.Size = new System.Drawing.Size(1060, 620);
+			this.Chart.TabIndex = 2;
+			this.Chart.Text = "0~3 Power Frequency";
 			// 
 			// Spinner
 			// 
@@ -315,15 +296,6 @@
 			this.Spinner.TabIndex = 2;
 			this.Spinner.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Spinner.UseSelectable = true;
-			// 
-			// Chart_3
-			// 
-			this.Chart_3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Chart_3.Location = new System.Drawing.Point(3, 3);
-			this.Chart_3.Name = "Chart_3";
-			this.Chart_3.Size = new System.Drawing.Size(1054, 614);
-			this.Chart_3.TabIndex = 0;
-			this.Chart_3.Text = "0~3 Power Frequency";
 			// 
 			// Component
 			// 
@@ -342,8 +314,6 @@
 			this.DayTabs.ResumeLayout(false);
 			this.Footer.ResumeLayout(false);
 			this.Body.ResumeLayout(false);
-			this.Body.PerformLayout();
-			this.ChartTable.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -364,8 +334,7 @@
 		private MetroFramework.Controls.MetroTextBox UIDSearch;
 		private MetroFramework.Controls.MetroProgressSpinner Spinner;
 		private MetroFramework.Controls.MetroButton LoadBtn;
-		private System.Windows.Forms.TableLayoutPanel ChartTable;
-		private LiveCharts.WinForms.CartesianChart Chart_3;
+		private LiveCharts.WinForms.CartesianChart Chart;
 	}
 }
 

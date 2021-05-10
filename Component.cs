@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroUI.Common;
 using LiveCharts;
+using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
 
@@ -22,28 +23,50 @@ namespace MetroUI
 		public Component()
 		{
 			InitializeComponent();
-			this.Chart_3.Series = new SeriesCollection
+			ChartValues<ObservablePoint> test = new ChartValues<ObservablePoint>();
+			this.Chart.Series = new SeriesCollection
 			{
 				new LineSeries
 				{
-					Values = new ChartValues<double> { 3, 5, 7, 4 }
+					Title = "0~3 Power Frequency",
+					Values = new ChartValues<ObservablePoint>
+					{
+						new ObservablePoint(1,5),
+						new ObservablePoint(1.5,7.6),
+						new ObservablePoint(2,21),
+						new ObservablePoint(5,25),
+						new ObservablePoint(10,30),
+						new ObservablePoint(17,30),
+						new ObservablePoint(19.6,30),
+						new ObservablePoint(30,40),
+					}
 				},
 				new LineSeries
 				{
-					Values = new ChartValues<double> { 5, 6, 2, 7 }
+					Title = "3~6 Power Frequency",
+					Values = new ChartValues<ObservablePoint>
+					{
+						new ObservablePoint(5,5),
+						new ObservablePoint(6.5,7.6),
+						new ObservablePoint(7,21),
+						new ObservablePoint(19.6,30),
+						new ObservablePoint(30,40),
+					}
 				},
 			};
 
-			this.Chart_3.AxisX.Add(new Axis
+			this.Chart.AxisX = new AxesCollection()
 			{
-				Labels = new[]
+				new LiveCharts.Wpf.Axis()
 				{
-					"1",
-					"2",
-					"3",
-					"4"
+					Title= "Minutes",
+					Separator = new LiveCharts.Wpf.Separator()
+					{
+						Step = 5.0,
+						IsEnabled = false
+					}
 				}
-			});
+			};
 		}
 		public void SetController(IController controller)
 		{
@@ -56,6 +79,7 @@ namespace MetroUI
 			{
 				case ACTION.LOAD_EXCEL_SUCCESS:
 					this.Body.Controls.Clear();
+					this.Body.Controls.Add(this.Chart);
 					break;
 				default:
 					break;
