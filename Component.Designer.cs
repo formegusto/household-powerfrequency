@@ -46,7 +46,6 @@
 			this.Header.SuspendLayout();
 			this.DayTabs.SuspendLayout();
 			this.Footer.SuspendLayout();
-			this.Body.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Header
@@ -254,6 +253,7 @@
 			this.UIDSearch.WaterMark = "UID";
 			this.UIDSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
 			this.UIDSearch.WaterMarkFont = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.UIDSearch.TextChanged += new System.EventHandler(this.UIDSearch_Changed);
 			// 
 			// Body
 			// 
@@ -309,11 +309,9 @@
 			this.Resizable = false;
 			this.Text = "KETI";
 			this.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Load += new System.EventHandler(this.Component_Load);
 			this.Header.ResumeLayout(false);
 			this.DayTabs.ResumeLayout(false);
 			this.Footer.ResumeLayout(false);
-			this.Body.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

@@ -18,7 +18,16 @@ namespace MetroUI
 		IModel model;
 		public void ViewChanged(IView v, ViewEventArgs e)
 		{
-			// ViewChanged Response
+			Console.WriteLine(string.Format("[View -> Model:ViewChanged] {0}", e.action));
+			switch (e.action)
+			{
+				case VIEW_ACTIONS.CHANGE_KEYWORD:
+					this.model.ChangeKeyword(e.keyword);
+
+					break;
+				default:
+					break;
+			}
 		}
 		public DayClusterController(IView v, IModel m)
 		{
@@ -30,10 +39,10 @@ namespace MetroUI
 		}
 		public void Dispatch(string action, Dictionary<string, dynamic> payload = null)
 		{
-			Console.WriteLine(string.Format("[View -> Model] {0}", action));
+			Console.WriteLine(string.Format("[View -> Model:ModelChanged] {0}", action));
 			switch(action)
 			{
-				case ACTION.LOAD_EXCEL:
+				case MODEL_ACTIONS.LOAD_EXCEL:
 					this.model.LoadExcel();
 
 					break;

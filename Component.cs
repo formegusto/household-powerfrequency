@@ -59,7 +59,7 @@ namespace MetroUI
 			{
 				new LiveCharts.Wpf.Axis()
 				{
-					Title= "Minutes",
+					Title= "Power",
 					Separator = new LiveCharts.Wpf.Separator()
 					{
 						Step = 5.0,
@@ -77,23 +77,25 @@ namespace MetroUI
 			Console.WriteLine(string.Format("[Model -> View] {0}", e.action));
 			switch(e.action)
 			{
-				case ACTION.LOAD_EXCEL_SUCCESS:
+				case COMMON_ACTIONS.START_LOADING:
+					this.Body.Controls.Add(this.Spinner);
+
+					break;
+				case COMMON_ACTIONS.STOP_LOADING:
 					this.Body.Controls.Clear();
+
+					break;
+				case MODEL_ACTIONS.LOAD_EXCEL_SUCCESS:
 					this.Body.Controls.Add(this.Chart);
+
 					break;
 				default:
 					break;
 			}
 		}
-		private void Component_Load(object sender, EventArgs e)
-		{
-		}
+		private void LoadBtn_Click(object sender, EventArgs e) => this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
 
-		private void LoadBtn_Click(object sender, EventArgs e)
-		{
-			this.Body.Controls.Add(this.Spinner);
-			this.controller.Dispatch(ACTION.LOAD_EXCEL);
-		}
+		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 
 		private void DayTabs_Selected(object sender, TabControlEventArgs e)
 		{
