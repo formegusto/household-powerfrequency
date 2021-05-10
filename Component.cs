@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroUI.Common;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.WinForms;
 
 namespace MetroUI
 {
@@ -19,6 +22,28 @@ namespace MetroUI
 		public Component()
 		{
 			InitializeComponent();
+			this.Chart_3.Series = new SeriesCollection
+			{
+				new LineSeries
+				{
+					Values = new ChartValues<double> { 3, 5, 7, 4 }
+				},
+				new LineSeries
+				{
+					Values = new ChartValues<double> { 5, 6, 2, 7 }
+				},
+			};
+
+			this.Chart_3.AxisX.Add(new Axis
+			{
+				Labels = new[]
+				{
+					"1",
+					"2",
+					"3",
+					"4"
+				}
+			});
 		}
 		public void SetController(IController controller)
 		{
@@ -44,6 +69,12 @@ namespace MetroUI
 		{
 			this.Body.Controls.Add(this.Spinner);
 			this.controller.Dispatch(ACTION.LOAD_EXCEL);
+		}
+
+		private void DayTabs_Selected(object sender, TabControlEventArgs e)
+		{
+			Console.WriteLine(e.TabPage);
+			Console.WriteLine(e.TabPageIndex);
 		}
 	}
 }
