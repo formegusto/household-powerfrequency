@@ -31,12 +31,12 @@
 			this.Header = new MetroFramework.Controls.MetroPanel();
 			this.DayTabs = new MetroFramework.Controls.MetroTabControl();
 			this.Sun = new MetroFramework.Controls.MetroTabPage();
-			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Mon = new MetroFramework.Controls.MetroTabPage();
 			this.Tue = new MetroFramework.Controls.MetroTabPage();
 			this.Wed = new MetroFramework.Controls.MetroTabPage();
 			this.Thu = new MetroFramework.Controls.MetroTabPage();
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
+			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Footer = new MetroFramework.Controls.MetroPanel();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
@@ -67,16 +67,16 @@
 			// DayTabs
 			// 
 			this.DayTabs.Controls.Add(this.Sun);
-			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Controls.Add(this.Mon);
 			this.DayTabs.Controls.Add(this.Tue);
 			this.DayTabs.Controls.Add(this.Wed);
 			this.DayTabs.Controls.Add(this.Thu);
 			this.DayTabs.Controls.Add(this.Fri);
+			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DayTabs.Location = new System.Drawing.Point(0, 0);
 			this.DayTabs.Name = "DayTabs";
-			this.DayTabs.SelectedIndex = 0;
+			this.DayTabs.SelectedIndex = 6;
 			this.DayTabs.Size = new System.Drawing.Size(1060, 50);
 			this.DayTabs.TabIndex = 2;
 			this.DayTabs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,31 +99,16 @@
 			this.Sun.VerticalScrollbarHighlightOnWheel = false;
 			this.Sun.VerticalScrollbarSize = 10;
 			// 
-			// Sat
-			// 
-			this.Sat.HorizontalScrollbarBarColor = true;
-			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
-			this.Sat.HorizontalScrollbarSize = 10;
-			this.Sat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.Sat.Location = new System.Drawing.Point(4, 38);
-			this.Sat.Name = "Sat";
-			this.Sat.Size = new System.Drawing.Size(1052, 8);
-			this.Sat.TabIndex = 6;
-			this.Sat.Text = "Sat";
-			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Sat.VerticalScrollbarBarColor = true;
-			this.Sat.VerticalScrollbarHighlightOnWheel = false;
-			this.Sat.VerticalScrollbarSize = 10;
-			// 
 			// Mon
 			// 
 			this.Mon.HorizontalScrollbarBarColor = true;
 			this.Mon.HorizontalScrollbarHighlightOnWheel = false;
 			this.Mon.HorizontalScrollbarSize = 10;
+			this.Mon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.Mon.Location = new System.Drawing.Point(4, 38);
 			this.Mon.Name = "Mon";
 			this.Mon.Size = new System.Drawing.Size(1052, 8);
-			this.Mon.TabIndex = 1;
+			this.Mon.TabIndex = 6;
 			this.Mon.Text = "Mon";
 			this.Mon.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Mon.VerticalScrollbarBarColor = true;
@@ -138,7 +123,7 @@
 			this.Tue.Location = new System.Drawing.Point(4, 38);
 			this.Tue.Name = "Tue";
 			this.Tue.Size = new System.Drawing.Size(1052, 8);
-			this.Tue.TabIndex = 2;
+			this.Tue.TabIndex = 1;
 			this.Tue.Text = "Tue";
 			this.Tue.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Tue.VerticalScrollbarBarColor = true;
@@ -153,7 +138,7 @@
 			this.Wed.Location = new System.Drawing.Point(4, 38);
 			this.Wed.Name = "Wed";
 			this.Wed.Size = new System.Drawing.Size(1052, 8);
-			this.Wed.TabIndex = 3;
+			this.Wed.TabIndex = 2;
 			this.Wed.Text = "Wed";
 			this.Wed.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Wed.VerticalScrollbarBarColor = true;
@@ -168,7 +153,7 @@
 			this.Thu.Location = new System.Drawing.Point(4, 38);
 			this.Thu.Name = "Thu";
 			this.Thu.Size = new System.Drawing.Size(1052, 8);
-			this.Thu.TabIndex = 4;
+			this.Thu.TabIndex = 3;
 			this.Thu.Text = "Thu";
 			this.Thu.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Thu.VerticalScrollbarBarColor = true;
@@ -183,12 +168,27 @@
 			this.Fri.Location = new System.Drawing.Point(4, 38);
 			this.Fri.Name = "Fri";
 			this.Fri.Size = new System.Drawing.Size(1052, 8);
-			this.Fri.TabIndex = 5;
+			this.Fri.TabIndex = 4;
 			this.Fri.Text = "Fri";
 			this.Fri.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Fri.VerticalScrollbarBarColor = true;
 			this.Fri.VerticalScrollbarHighlightOnWheel = false;
 			this.Fri.VerticalScrollbarSize = 10;
+			// 
+			// Sat
+			// 
+			this.Sat.HorizontalScrollbarBarColor = true;
+			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
+			this.Sat.HorizontalScrollbarSize = 10;
+			this.Sat.Location = new System.Drawing.Point(4, 38);
+			this.Sat.Name = "Sat";
+			this.Sat.Size = new System.Drawing.Size(1052, 8);
+			this.Sat.TabIndex = 5;
+			this.Sat.Text = "Sat";
+			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Sat.VerticalScrollbarBarColor = true;
+			this.Sat.VerticalScrollbarHighlightOnWheel = false;
+			this.Sat.VerticalScrollbarSize = 10;
 			// 
 			// Footer
 			// 
@@ -323,12 +323,12 @@
 		private MetroFramework.Controls.MetroPanel Body;
 		private MetroFramework.Controls.MetroTabControl DayTabs;
 		private MetroFramework.Controls.MetroTabPage Sun;
-		private MetroFramework.Controls.MetroTabPage Mon;
 		private MetroFramework.Controls.MetroTabPage Tue;
 		private MetroFramework.Controls.MetroTabPage Wed;
 		private MetroFramework.Controls.MetroTabPage Thu;
 		private MetroFramework.Controls.MetroTabPage Fri;
 		private MetroFramework.Controls.MetroTabPage Sat;
+		private MetroFramework.Controls.MetroTabPage Mon;
 		private MetroFramework.Controls.MetroTextBox UIDSearch;
 		private MetroFramework.Controls.MetroProgressSpinner Spinner;
 		private MetroFramework.Controls.MetroButton LoadBtn;

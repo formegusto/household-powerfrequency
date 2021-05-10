@@ -14,6 +14,8 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
 
+using MetroUI.Entity;
+
 namespace MetroUI
 {
 	public partial class Component : MetroFramework.Forms.MetroForm, IView, IModelObserver
@@ -87,22 +89,42 @@ namespace MetroUI
 
 					break;
 				case MODEL_ACTIONS.LOAD_EXCEL_SUCCESS:
-					this.Body.Controls.Add(this.Chart);
+					this.DayTabs.SelectTab(0);
 					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, 0));
+
+					break;
+				case VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS:
+					this.Chart.AxisX.Clear();
+					this.Chart.Series.Clear();
+					this.Body.Controls.Add(this.Chart);
+					ConfigChart(e.powerFrequencies);
 
 					break;
 				default:
 					break;
 			}
 		}
+		public void ConfigChart(List<PowerFrequency>[] pf)
+		{
+			int startHours = 0;
+			for(int p = 0; p < pf.Length; p++)
+			{
+				ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
+				pf[p].ForEach((pp) =>
+				{
+					cv.Add(new ObservablePoint(pp.wh, pp.frequency));
+				});
+				LineSeries ls = new LineSeries
+				{
+					Title = string.Format("{0}~{1}h PowerFrequency", startHours, startHours += 3),
+					Values = cv
+				};
+				this.Chart.Series.Add(ls);
+			}
+		}
 		private void LoadBtn_Click(object sender, EventArgs e) => this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
-
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 
-		private void DayTabs_Selected(object sender, TabControlEventArgs e)
-		{
-			Console.WriteLine(e.TabPage);
-			Console.WriteLine(e.TabPageIndex);
-		}
+		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, e.TabPageIndex));
 	}
 }
