@@ -78,6 +78,7 @@ namespace MetroUI
 			switch(e.action)
 			{
 				case COMMON_ACTIONS.START_LOADING:
+					this.Body.Controls.Clear();
 					this.Body.Controls.Add(this.Spinner);
 
 					break;
