@@ -11,10 +11,16 @@ namespace MetroUI
 	{
 		public string action;
 		public string keyword;
+		public int dayIdx;
 		public ViewEventArgs(string a, string k)
 		{
 			this.action = a;
 			this.keyword = k;
+		}
+		public ViewEventArgs(string a, int di)
+		{
+			this.action = a;
+			this.dayIdx = di;
 		}
 	}
 	public interface IView

@@ -88,6 +88,7 @@ namespace MetroUI
 					break;
 				case MODEL_ACTIONS.LOAD_EXCEL_SUCCESS:
 					this.Body.Controls.Add(this.Chart);
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, 0));
 
 					break;
 				default:
