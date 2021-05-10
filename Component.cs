@@ -80,12 +80,12 @@ namespace MetroUI
 			switch(e.action)
 			{
 				case COMMON_ACTIONS.START_LOADING:
-					this.Body.Controls.Clear();
-					this.Body.Controls.Add(this.Spinner);
+					this.ChartContainer.Controls.Clear();
+					this.ChartContainer.Controls.Add(this.Spinner);
 
 					break;
 				case COMMON_ACTIONS.STOP_LOADING:
-					this.Body.Controls.Clear();
+					this.ChartContainer.Controls.Clear();
 
 					break;
 				case MODEL_ACTIONS.LOAD_EXCEL_SUCCESS:
@@ -96,7 +96,7 @@ namespace MetroUI
 				case VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS:
 					this.Chart.AxisX.Clear();
 					this.Chart.Series.Clear();
-					this.Body.Controls.Add(this.Chart);
+					this.ChartContainer.Controls.Add(this.Chart);
 					ConfigChart(e.powerFrequencies);
 
 					break;
@@ -124,7 +124,15 @@ namespace MetroUI
 		}
 		private void LoadBtn_Click(object sender, EventArgs e) => this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
-
 		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, e.TabPageIndex));
+		private void Visible_Toggled(object sender, EventArgs e)
+		{
+			string tag = ((MetroFramework.Controls.MetroCheckBox) sender).Tag.ToString();
+			bool isVisibility = ((LineSeries)this.Chart.Series[int.Parse(tag)]).Visibility == System.Windows.Visibility.Visible;
+			((LineSeries) this.Chart.Series[int.Parse(tag)]).Visibility = isVisibility ? 
+				System.Windows.Visibility.Hidden
+				:
+				System.Windows.Visibility.Visible;
+		}
 	}
 }
