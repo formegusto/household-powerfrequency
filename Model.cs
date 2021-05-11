@@ -19,17 +19,19 @@ namespace MetroUI
 		public string action;
 		public DayData[] dayData;
 		public List<PowerFrequency>[] powerFrequencies;
+		public TimeSlot timeslot;
 
 		public ModelEventArgs(string a)
 		{
 			this.action = a;
 		}
 
-		public ModelEventArgs(string a, DayData[] dd, List<PowerFrequency>[] pf)
+		public ModelEventArgs(string a, DayData[] dd, List<PowerFrequency>[] pf, TimeSlot ts)
 		{
 			this.action = a;
 			this.dayData = dd;
 			this.powerFrequencies = pf;
+			this.timeslot = ts;
 		}
 	}
 	public interface IModelObserver
@@ -157,7 +159,7 @@ namespace MetroUI
 
 			this.powerFrequencies = pfList;
 			if (isNotify)
-				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies));
+				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.timeslot));
 		}
 	}
 }

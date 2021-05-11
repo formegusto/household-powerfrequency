@@ -17,6 +17,7 @@ using LiveCharts.WinForms;
 using System.Windows.Threading;
 
 using MetroUI.Entity;
+using MetroUI.Utils;
 
 namespace MetroUI
 {
@@ -57,7 +58,7 @@ namespace MetroUI
 					this.ChartContainer.Controls.Add(this.Chart);
 					Task.Run(() =>
 					{
-						ConfigChart(e.powerFrequencies);
+						ConfigChart(e.powerFrequencies, e.timeslot);
 					});
 					
 					break;
@@ -65,7 +66,7 @@ namespace MetroUI
 					break;
 			}
 		}
-		public void ConfigChart(List<PowerFrequency>[] pf)
+		public void ConfigChart(List<PowerFrequency>[] pf, TimeSlot ts)
 		{
 			this.Invoke((System.Action)( () => {
 				int startHours = 0;
@@ -79,7 +80,7 @@ namespace MetroUI
 
 					LineSeries ls = new LineSeries
 					{
-						Title = string.Format("{0}~{1}h Power Frequency", startHours, startHours += 3),
+						Title = string.Format("{0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
 						Values = cv
 					};
 					this.Chart.Series.Add(ls);
