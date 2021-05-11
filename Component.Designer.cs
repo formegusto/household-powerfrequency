@@ -29,31 +29,47 @@
 		private void InitializeComponent()
 		{
 			this.Header = new MetroFramework.Controls.MetroPanel();
+			this.SeasonPanel = new MetroFramework.Controls.MetroPanel();
+			this.SeasonControlTabs = new MetroFramework.Controls.MetroTabControl();
+			this.Spring = new MetroFramework.Controls.MetroTabPage();
+			this.Summer = new MetroFramework.Controls.MetroTabPage();
+			this.Autumn = new MetroFramework.Controls.MetroTabPage();
+			this.Winter = new MetroFramework.Controls.MetroTabPage();
+			this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
 			this.DayTabs = new MetroFramework.Controls.MetroTabControl();
 			this.Sun = new MetroFramework.Controls.MetroTabPage();
+			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Mon = new MetroFramework.Controls.MetroTabPage();
 			this.Tue = new MetroFramework.Controls.MetroTabPage();
 			this.Wed = new MetroFramework.Controls.MetroTabPage();
 			this.Thu = new MetroFramework.Controls.MetroTabPage();
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
-			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Footer = new MetroFramework.Controls.MetroPanel();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
 			this.Body = new MetroFramework.Controls.MetroPanel();
+			this.CheckBoxContainer = new MetroFramework.Controls.MetroPanel();
+			this.Visible24H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible21H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible18H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible15H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible12H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible9H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible6H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible3H = new MetroFramework.Controls.MetroCheckBox();
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
-			this.CheckBoxContainer = new MetroFramework.Controls.MetroPanel();
-			this.Visible3H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible6H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible9H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible12H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible15H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible18H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible21H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible24H = new MetroFramework.Controls.MetroCheckBox();
+			this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
+			this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
+			this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
+			this.metroRadioButton4 = new MetroFramework.Controls.MetroRadioButton();
+			this.metroRadioButton5 = new MetroFramework.Controls.MetroRadioButton();
+			this.metroRadioButton6 = new MetroFramework.Controls.MetroRadioButton();
 			this.Header.SuspendLayout();
+			this.SeasonPanel.SuspendLayout();
+			this.SeasonControlTabs.SuspendLayout();
+			this.metroPanel1.SuspendLayout();
 			this.DayTabs.SuspendLayout();
 			this.Footer.SuspendLayout();
 			this.Body.SuspendLayout();
@@ -62,7 +78,8 @@
 			// 
 			// Header
 			// 
-			this.Header.Controls.Add(this.DayTabs);
+			this.Header.Controls.Add(this.SeasonPanel);
+			this.Header.Controls.Add(this.metroPanel1);
 			this.Header.Dock = System.Windows.Forms.DockStyle.Top;
 			this.Header.HorizontalScrollbarBarColor = true;
 			this.Header.HorizontalScrollbarHighlightOnWheel = false;
@@ -76,25 +93,132 @@
 			this.Header.VerticalScrollbarHighlightOnWheel = false;
 			this.Header.VerticalScrollbarSize = 10;
 			// 
+			// SeasonPanel
+			// 
+			this.SeasonPanel.Controls.Add(this.SeasonControlTabs);
+			this.SeasonPanel.Dock = System.Windows.Forms.DockStyle.Right;
+			this.SeasonPanel.HorizontalScrollbarBarColor = true;
+			this.SeasonPanel.HorizontalScrollbarHighlightOnWheel = false;
+			this.SeasonPanel.HorizontalScrollbarSize = 10;
+			this.SeasonPanel.Location = new System.Drawing.Point(770, 0);
+			this.SeasonPanel.Name = "SeasonPanel";
+			this.SeasonPanel.Size = new System.Drawing.Size(290, 50);
+			this.SeasonPanel.TabIndex = 5;
+			this.SeasonPanel.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.SeasonPanel.VerticalScrollbarBarColor = true;
+			this.SeasonPanel.VerticalScrollbarHighlightOnWheel = false;
+			this.SeasonPanel.VerticalScrollbarSize = 10;
+			// 
+			// SeasonControlTabs
+			// 
+			this.SeasonControlTabs.Controls.Add(this.Spring);
+			this.SeasonControlTabs.Controls.Add(this.Summer);
+			this.SeasonControlTabs.Controls.Add(this.Autumn);
+			this.SeasonControlTabs.Controls.Add(this.Winter);
+			this.SeasonControlTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.SeasonControlTabs.ItemSize = new System.Drawing.Size(54, 34);
+			this.SeasonControlTabs.Location = new System.Drawing.Point(0, 0);
+			this.SeasonControlTabs.Name = "SeasonControlTabs";
+			this.SeasonControlTabs.SelectedIndex = 3;
+			this.SeasonControlTabs.Size = new System.Drawing.Size(290, 50);
+			this.SeasonControlTabs.TabIndex = 11;
+			this.SeasonControlTabs.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.SeasonControlTabs.UseSelectable = true;
+			// 
+			// Spring
+			// 
+			this.Spring.HorizontalScrollbarBarColor = true;
+			this.Spring.HorizontalScrollbarHighlightOnWheel = false;
+			this.Spring.HorizontalScrollbarSize = 10;
+			this.Spring.Location = new System.Drawing.Point(4, 38);
+			this.Spring.Name = "Spring";
+			this.Spring.Size = new System.Drawing.Size(282, 8);
+			this.Spring.TabIndex = 0;
+			this.Spring.Text = "Spring";
+			this.Spring.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Spring.VerticalScrollbarBarColor = true;
+			this.Spring.VerticalScrollbarHighlightOnWheel = false;
+			this.Spring.VerticalScrollbarSize = 10;
+			// 
+			// Summer
+			// 
+			this.Summer.HorizontalScrollbarBarColor = true;
+			this.Summer.HorizontalScrollbarHighlightOnWheel = false;
+			this.Summer.HorizontalScrollbarSize = 10;
+			this.Summer.Location = new System.Drawing.Point(4, 38);
+			this.Summer.Name = "Summer";
+			this.Summer.Size = new System.Drawing.Size(282, 8);
+			this.Summer.TabIndex = 1;
+			this.Summer.Text = "Summer";
+			this.Summer.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Summer.VerticalScrollbarBarColor = true;
+			this.Summer.VerticalScrollbarHighlightOnWheel = false;
+			this.Summer.VerticalScrollbarSize = 10;
+			// 
+			// Autumn
+			// 
+			this.Autumn.HorizontalScrollbarBarColor = true;
+			this.Autumn.HorizontalScrollbarHighlightOnWheel = false;
+			this.Autumn.HorizontalScrollbarSize = 10;
+			this.Autumn.Location = new System.Drawing.Point(4, 38);
+			this.Autumn.Name = "Autumn";
+			this.Autumn.Size = new System.Drawing.Size(282, 8);
+			this.Autumn.TabIndex = 2;
+			this.Autumn.Text = "Autumn";
+			this.Autumn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Autumn.VerticalScrollbarBarColor = true;
+			this.Autumn.VerticalScrollbarHighlightOnWheel = false;
+			this.Autumn.VerticalScrollbarSize = 10;
+			// 
+			// Winter
+			// 
+			this.Winter.HorizontalScrollbarBarColor = true;
+			this.Winter.HorizontalScrollbarHighlightOnWheel = false;
+			this.Winter.HorizontalScrollbarSize = 10;
+			this.Winter.Location = new System.Drawing.Point(4, 38);
+			this.Winter.Name = "Winter";
+			this.Winter.Size = new System.Drawing.Size(282, 8);
+			this.Winter.TabIndex = 3;
+			this.Winter.Text = "Winter";
+			this.Winter.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Winter.VerticalScrollbarBarColor = true;
+			this.Winter.VerticalScrollbarHighlightOnWheel = false;
+			this.Winter.VerticalScrollbarSize = 10;
+			// 
+			// metroPanel1
+			// 
+			this.metroPanel1.Controls.Add(this.DayTabs);
+			this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.metroPanel1.HorizontalScrollbarBarColor = true;
+			this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+			this.metroPanel1.HorizontalScrollbarSize = 10;
+			this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+			this.metroPanel1.Name = "metroPanel1";
+			this.metroPanel1.Size = new System.Drawing.Size(768, 50);
+			this.metroPanel1.TabIndex = 4;
+			this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroPanel1.VerticalScrollbarBarColor = true;
+			this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+			this.metroPanel1.VerticalScrollbarSize = 10;
+			// 
 			// DayTabs
 			// 
 			this.DayTabs.Controls.Add(this.Sun);
+			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Controls.Add(this.Mon);
 			this.DayTabs.Controls.Add(this.Tue);
 			this.DayTabs.Controls.Add(this.Wed);
 			this.DayTabs.Controls.Add(this.Thu);
 			this.DayTabs.Controls.Add(this.Fri);
-			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DayTabs.Location = new System.Drawing.Point(0, 0);
 			this.DayTabs.Name = "DayTabs";
-			this.DayTabs.SelectedIndex = 6;
-			this.DayTabs.Size = new System.Drawing.Size(1060, 50);
-			this.DayTabs.TabIndex = 2;
+			this.DayTabs.SelectedIndex = 0;
+			this.DayTabs.Size = new System.Drawing.Size(768, 50);
+			this.DayTabs.TabIndex = 11;
 			this.DayTabs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.DayTabs.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.DayTabs.UseSelectable = true;
-			this.DayTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.DayTabs_Selected);
 			// 
 			// Sun
 			// 
@@ -103,13 +227,28 @@
 			this.Sun.HorizontalScrollbarSize = 10;
 			this.Sun.Location = new System.Drawing.Point(4, 38);
 			this.Sun.Name = "Sun";
-			this.Sun.Size = new System.Drawing.Size(1052, 8);
+			this.Sun.Size = new System.Drawing.Size(760, 8);
 			this.Sun.TabIndex = 0;
 			this.Sun.Text = "Sun";
 			this.Sun.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Sun.VerticalScrollbarBarColor = true;
 			this.Sun.VerticalScrollbarHighlightOnWheel = false;
 			this.Sun.VerticalScrollbarSize = 10;
+			// 
+			// Sat
+			// 
+			this.Sat.HorizontalScrollbarBarColor = true;
+			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
+			this.Sat.HorizontalScrollbarSize = 10;
+			this.Sat.Location = new System.Drawing.Point(4, 38);
+			this.Sat.Name = "Sat";
+			this.Sat.Size = new System.Drawing.Size(760, 8);
+			this.Sat.TabIndex = 5;
+			this.Sat.Text = "Sat";
+			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Sat.VerticalScrollbarBarColor = true;
+			this.Sat.VerticalScrollbarHighlightOnWheel = false;
+			this.Sat.VerticalScrollbarSize = 10;
 			// 
 			// Mon
 			// 
@@ -119,7 +258,7 @@
 			this.Mon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.Mon.Location = new System.Drawing.Point(4, 38);
 			this.Mon.Name = "Mon";
-			this.Mon.Size = new System.Drawing.Size(1052, 8);
+			this.Mon.Size = new System.Drawing.Size(760, 8);
 			this.Mon.TabIndex = 6;
 			this.Mon.Text = "Mon";
 			this.Mon.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -134,7 +273,7 @@
 			this.Tue.HorizontalScrollbarSize = 10;
 			this.Tue.Location = new System.Drawing.Point(4, 38);
 			this.Tue.Name = "Tue";
-			this.Tue.Size = new System.Drawing.Size(1052, 8);
+			this.Tue.Size = new System.Drawing.Size(760, 8);
 			this.Tue.TabIndex = 1;
 			this.Tue.Text = "Tue";
 			this.Tue.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -149,7 +288,7 @@
 			this.Wed.HorizontalScrollbarSize = 10;
 			this.Wed.Location = new System.Drawing.Point(4, 38);
 			this.Wed.Name = "Wed";
-			this.Wed.Size = new System.Drawing.Size(1052, 8);
+			this.Wed.Size = new System.Drawing.Size(760, 8);
 			this.Wed.TabIndex = 2;
 			this.Wed.Text = "Wed";
 			this.Wed.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -164,7 +303,7 @@
 			this.Thu.HorizontalScrollbarSize = 10;
 			this.Thu.Location = new System.Drawing.Point(4, 38);
 			this.Thu.Name = "Thu";
-			this.Thu.Size = new System.Drawing.Size(1052, 8);
+			this.Thu.Size = new System.Drawing.Size(760, 8);
 			this.Thu.TabIndex = 3;
 			this.Thu.Text = "Thu";
 			this.Thu.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -179,28 +318,13 @@
 			this.Fri.HorizontalScrollbarSize = 10;
 			this.Fri.Location = new System.Drawing.Point(4, 38);
 			this.Fri.Name = "Fri";
-			this.Fri.Size = new System.Drawing.Size(1052, 8);
+			this.Fri.Size = new System.Drawing.Size(760, 8);
 			this.Fri.TabIndex = 4;
 			this.Fri.Text = "Fri";
 			this.Fri.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Fri.VerticalScrollbarBarColor = true;
 			this.Fri.VerticalScrollbarHighlightOnWheel = false;
 			this.Fri.VerticalScrollbarSize = 10;
-			// 
-			// Sat
-			// 
-			this.Sat.HorizontalScrollbarBarColor = true;
-			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
-			this.Sat.HorizontalScrollbarSize = 10;
-			this.Sat.Location = new System.Drawing.Point(4, 38);
-			this.Sat.Name = "Sat";
-			this.Sat.Size = new System.Drawing.Size(1052, 8);
-			this.Sat.TabIndex = 5;
-			this.Sat.Text = "Sat";
-			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Sat.VerticalScrollbarBarColor = true;
-			this.Sat.VerticalScrollbarHighlightOnWheel = false;
-			this.Sat.VerticalScrollbarSize = 10;
 			// 
 			// Footer
 			// 
@@ -287,6 +411,155 @@
 			this.Body.VerticalScrollbarHighlightOnWheel = false;
 			this.Body.VerticalScrollbarSize = 0;
 			// 
+			// CheckBoxContainer
+			// 
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton6);
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton5);
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton4);
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton3);
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton2);
+			this.CheckBoxContainer.Controls.Add(this.metroRadioButton1);
+			this.CheckBoxContainer.Controls.Add(this.Visible24H);
+			this.CheckBoxContainer.Controls.Add(this.Visible21H);
+			this.CheckBoxContainer.Controls.Add(this.Visible18H);
+			this.CheckBoxContainer.Controls.Add(this.Visible15H);
+			this.CheckBoxContainer.Controls.Add(this.Visible12H);
+			this.CheckBoxContainer.Controls.Add(this.Visible9H);
+			this.CheckBoxContainer.Controls.Add(this.Visible6H);
+			this.CheckBoxContainer.Controls.Add(this.Visible3H);
+			this.CheckBoxContainer.Dock = System.Windows.Forms.DockStyle.Top;
+			this.CheckBoxContainer.HorizontalScrollbarBarColor = true;
+			this.CheckBoxContainer.HorizontalScrollbarHighlightOnWheel = false;
+			this.CheckBoxContainer.HorizontalScrollbarSize = 10;
+			this.CheckBoxContainer.Location = new System.Drawing.Point(0, 0);
+			this.CheckBoxContainer.Name = "CheckBoxContainer";
+			this.CheckBoxContainer.Size = new System.Drawing.Size(1060, 33);
+			this.CheckBoxContainer.TabIndex = 2;
+			this.CheckBoxContainer.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.CheckBoxContainer.VerticalScrollbarBarColor = true;
+			this.CheckBoxContainer.VerticalScrollbarHighlightOnWheel = false;
+			this.CheckBoxContainer.VerticalScrollbarSize = 10;
+			// 
+			// Visible24H
+			// 
+			this.Visible24H.AutoSize = true;
+			this.Visible24H.Checked = true;
+			this.Visible24H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible24H.Location = new System.Drawing.Point(434, 0);
+			this.Visible24H.Name = "Visible24H";
+			this.Visible24H.Size = new System.Drawing.Size(62, 15);
+			this.Visible24H.TabIndex = 9;
+			this.Visible24H.Tag = "7";
+			this.Visible24H.Text = "21~24h";
+			this.Visible24H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible24H.UseSelectable = true;
+			this.Visible24H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible21H
+			// 
+			this.Visible21H.AutoSize = true;
+			this.Visible21H.Checked = true;
+			this.Visible21H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible21H.Location = new System.Drawing.Point(366, 0);
+			this.Visible21H.Name = "Visible21H";
+			this.Visible21H.Size = new System.Drawing.Size(62, 15);
+			this.Visible21H.TabIndex = 8;
+			this.Visible21H.Tag = "6";
+			this.Visible21H.Text = "18~21h";
+			this.Visible21H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible21H.UseSelectable = true;
+			this.Visible21H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible18H
+			// 
+			this.Visible18H.AutoSize = true;
+			this.Visible18H.Checked = true;
+			this.Visible18H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible18H.Location = new System.Drawing.Point(298, 0);
+			this.Visible18H.Name = "Visible18H";
+			this.Visible18H.Size = new System.Drawing.Size(62, 15);
+			this.Visible18H.TabIndex = 7;
+			this.Visible18H.Tag = "5";
+			this.Visible18H.Text = "15~18h";
+			this.Visible18H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible18H.UseSelectable = true;
+			this.Visible18H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible15H
+			// 
+			this.Visible15H.AutoSize = true;
+			this.Visible15H.Checked = true;
+			this.Visible15H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible15H.Location = new System.Drawing.Point(230, 0);
+			this.Visible15H.Name = "Visible15H";
+			this.Visible15H.Size = new System.Drawing.Size(62, 15);
+			this.Visible15H.TabIndex = 6;
+			this.Visible15H.Tag = "4";
+			this.Visible15H.Text = "12~15h";
+			this.Visible15H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible15H.UseSelectable = true;
+			this.Visible15H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible12H
+			// 
+			this.Visible12H.AutoSize = true;
+			this.Visible12H.Checked = true;
+			this.Visible12H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible12H.Location = new System.Drawing.Point(168, 0);
+			this.Visible12H.Name = "Visible12H";
+			this.Visible12H.Size = new System.Drawing.Size(56, 15);
+			this.Visible12H.TabIndex = 5;
+			this.Visible12H.Tag = "3";
+			this.Visible12H.Text = "9~12h";
+			this.Visible12H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible12H.UseSelectable = true;
+			this.Visible12H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible9H
+			// 
+			this.Visible9H.AutoSize = true;
+			this.Visible9H.Checked = true;
+			this.Visible9H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible9H.Location = new System.Drawing.Point(112, 0);
+			this.Visible9H.Name = "Visible9H";
+			this.Visible9H.Size = new System.Drawing.Size(50, 15);
+			this.Visible9H.TabIndex = 4;
+			this.Visible9H.Tag = "2";
+			this.Visible9H.Text = "6~9h";
+			this.Visible9H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible9H.UseSelectable = true;
+			this.Visible9H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible6H
+			// 
+			this.Visible6H.AutoSize = true;
+			this.Visible6H.Checked = true;
+			this.Visible6H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible6H.Location = new System.Drawing.Point(56, 0);
+			this.Visible6H.Name = "Visible6H";
+			this.Visible6H.Size = new System.Drawing.Size(50, 15);
+			this.Visible6H.TabIndex = 3;
+			this.Visible6H.Tag = "1";
+			this.Visible6H.Text = "3~6h";
+			this.Visible6H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible6H.UseSelectable = true;
+			this.Visible6H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
+			// Visible3H
+			// 
+			this.Visible3H.AutoSize = true;
+			this.Visible3H.Checked = true;
+			this.Visible3H.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible3H.Location = new System.Drawing.Point(0, 0);
+			this.Visible3H.Name = "Visible3H";
+			this.Visible3H.Size = new System.Drawing.Size(50, 15);
+			this.Visible3H.TabIndex = 2;
+			this.Visible3H.Tag = "0";
+			this.Visible3H.Text = "0~3h";
+			this.Visible3H.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible3H.UseSelectable = true;
+			this.Visible3H.Click += new System.EventHandler(this.Visible_Toggled);
+			// 
 			// Chart
 			// 
 			this.Chart.BackColor = System.Drawing.Color.Transparent;
@@ -325,148 +598,71 @@
 			this.ChartContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.VerticalScrollbarSize = 10;
 			// 
-			// CheckBoxContainer
+			// metroRadioButton1
 			// 
-			this.CheckBoxContainer.Controls.Add(this.Visible24H);
-			this.CheckBoxContainer.Controls.Add(this.Visible21H);
-			this.CheckBoxContainer.Controls.Add(this.Visible18H);
-			this.CheckBoxContainer.Controls.Add(this.Visible15H);
-			this.CheckBoxContainer.Controls.Add(this.Visible12H);
-			this.CheckBoxContainer.Controls.Add(this.Visible9H);
-			this.CheckBoxContainer.Controls.Add(this.Visible6H);
-			this.CheckBoxContainer.Controls.Add(this.Visible3H);
-			this.CheckBoxContainer.Dock = System.Windows.Forms.DockStyle.Top;
-			this.CheckBoxContainer.HorizontalScrollbarBarColor = true;
-			this.CheckBoxContainer.HorizontalScrollbarHighlightOnWheel = false;
-			this.CheckBoxContainer.HorizontalScrollbarSize = 10;
-			this.CheckBoxContainer.Location = new System.Drawing.Point(0, 0);
-			this.CheckBoxContainer.Name = "CheckBoxContainer";
-			this.CheckBoxContainer.Size = new System.Drawing.Size(1060, 33);
-			this.CheckBoxContainer.TabIndex = 2;
-			this.CheckBoxContainer.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.CheckBoxContainer.VerticalScrollbarBarColor = true;
-			this.CheckBoxContainer.VerticalScrollbarHighlightOnWheel = false;
-			this.CheckBoxContainer.VerticalScrollbarSize = 10;
+			this.metroRadioButton1.AutoSize = true;
+			this.metroRadioButton1.Location = new System.Drawing.Point(502, 0);
+			this.metroRadioButton1.Name = "metroRadioButton1";
+			this.metroRadioButton1.Size = new System.Drawing.Size(84, 15);
+			this.metroRadioButton1.TabIndex = 10;
+			this.metroRadioButton1.Text = "timeslot_3h";
+			this.metroRadioButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton1.UseSelectable = true;
 			// 
-			// Visible3H
+			// metroRadioButton2
 			// 
-			this.Visible3H.AutoSize = true;
-			this.Visible3H.Checked = true;
-			this.Visible3H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible3H.Location = new System.Drawing.Point(0, 0);
-			this.Visible3H.Name = "Visible3H";
-			this.Visible3H.Size = new System.Drawing.Size(50, 15);
-			this.Visible3H.TabIndex = 2;
-			this.Visible3H.Tag = "0";
-			this.Visible3H.Text = "0~3h";
-			this.Visible3H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible3H.UseSelectable = true;
-			this.Visible3H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.metroRadioButton2.AutoSize = true;
+			this.metroRadioButton2.Location = new System.Drawing.Point(592, 0);
+			this.metroRadioButton2.Name = "metroRadioButton2";
+			this.metroRadioButton2.Size = new System.Drawing.Size(84, 15);
+			this.metroRadioButton2.TabIndex = 11;
+			this.metroRadioButton2.Text = "timeslot_4h";
+			this.metroRadioButton2.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton2.UseSelectable = true;
 			// 
-			// Visible6H
+			// metroRadioButton3
 			// 
-			this.Visible6H.AutoSize = true;
-			this.Visible6H.Checked = true;
-			this.Visible6H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible6H.Location = new System.Drawing.Point(56, 0);
-			this.Visible6H.Name = "Visible6H";
-			this.Visible6H.Size = new System.Drawing.Size(50, 15);
-			this.Visible6H.TabIndex = 3;
-			this.Visible6H.Tag = "1";
-			this.Visible6H.Text = "3~6h";
-			this.Visible6H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible6H.UseSelectable = true;
-			this.Visible6H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.metroRadioButton3.AutoSize = true;
+			this.metroRadioButton3.Location = new System.Drawing.Point(682, 0);
+			this.metroRadioButton3.Name = "metroRadioButton3";
+			this.metroRadioButton3.Size = new System.Drawing.Size(84, 15);
+			this.metroRadioButton3.TabIndex = 12;
+			this.metroRadioButton3.Text = "timeslot_6h";
+			this.metroRadioButton3.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton3.UseSelectable = true;
 			// 
-			// Visible9H
+			// metroRadioButton4
 			// 
-			this.Visible9H.AutoSize = true;
-			this.Visible9H.Checked = true;
-			this.Visible9H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible9H.Location = new System.Drawing.Point(112, 0);
-			this.Visible9H.Name = "Visible9H";
-			this.Visible9H.Size = new System.Drawing.Size(50, 15);
-			this.Visible9H.TabIndex = 4;
-			this.Visible9H.Tag = "2";
-			this.Visible9H.Text = "6~9h";
-			this.Visible9H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible9H.UseSelectable = true;
-			this.Visible9H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.metroRadioButton4.AutoSize = true;
+			this.metroRadioButton4.Location = new System.Drawing.Point(772, 0);
+			this.metroRadioButton4.Name = "metroRadioButton4";
+			this.metroRadioButton4.Size = new System.Drawing.Size(84, 15);
+			this.metroRadioButton4.TabIndex = 13;
+			this.metroRadioButton4.Text = "timeslot_8h";
+			this.metroRadioButton4.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton4.UseSelectable = true;
 			// 
-			// Visible12H
+			// metroRadioButton5
 			// 
-			this.Visible12H.AutoSize = true;
-			this.Visible12H.Checked = true;
-			this.Visible12H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible12H.Location = new System.Drawing.Point(168, 0);
-			this.Visible12H.Name = "Visible12H";
-			this.Visible12H.Size = new System.Drawing.Size(56, 15);
-			this.Visible12H.TabIndex = 5;
-			this.Visible12H.Tag = "3";
-			this.Visible12H.Text = "9~12h";
-			this.Visible12H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible12H.UseSelectable = true;
-			this.Visible12H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.metroRadioButton5.AutoSize = true;
+			this.metroRadioButton5.Location = new System.Drawing.Point(862, 0);
+			this.metroRadioButton5.Name = "metroRadioButton5";
+			this.metroRadioButton5.Size = new System.Drawing.Size(90, 15);
+			this.metroRadioButton5.TabIndex = 14;
+			this.metroRadioButton5.Text = "timeslot_12h";
+			this.metroRadioButton5.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton5.UseSelectable = true;
 			// 
-			// Visible15H
+			// metroRadioButton6
 			// 
-			this.Visible15H.AutoSize = true;
-			this.Visible15H.Checked = true;
-			this.Visible15H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible15H.Location = new System.Drawing.Point(230, 0);
-			this.Visible15H.Name = "Visible15H";
-			this.Visible15H.Size = new System.Drawing.Size(62, 15);
-			this.Visible15H.TabIndex = 6;
-			this.Visible15H.Tag = "4";
-			this.Visible15H.Text = "12~15h";
-			this.Visible15H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible15H.UseSelectable = true;
-			this.Visible15H.Click += new System.EventHandler(this.Visible_Toggled);
-			// 
-			// Visible18H
-			// 
-			this.Visible18H.AutoSize = true;
-			this.Visible18H.Checked = true;
-			this.Visible18H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible18H.Location = new System.Drawing.Point(298, 0);
-			this.Visible18H.Name = "Visible18H";
-			this.Visible18H.Size = new System.Drawing.Size(62, 15);
-			this.Visible18H.TabIndex = 7;
-			this.Visible18H.Tag = "5";
-			this.Visible18H.Text = "15~18h";
-			this.Visible18H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible18H.UseSelectable = true;
-			this.Visible18H.Click += new System.EventHandler(this.Visible_Toggled);
-			// 
-			// Visible21H
-			// 
-			this.Visible21H.AutoSize = true;
-			this.Visible21H.Checked = true;
-			this.Visible21H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible21H.Location = new System.Drawing.Point(366, 0);
-			this.Visible21H.Name = "Visible21H";
-			this.Visible21H.Size = new System.Drawing.Size(62, 15);
-			this.Visible21H.TabIndex = 8;
-			this.Visible21H.Tag = "6";
-			this.Visible21H.Text = "18~21h";
-			this.Visible21H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible21H.UseSelectable = true;
-			this.Visible21H.Click += new System.EventHandler(this.Visible_Toggled);
-			// 
-			// Visible24H
-			// 
-			this.Visible24H.AutoSize = true;
-			this.Visible24H.Checked = true;
-			this.Visible24H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible24H.Location = new System.Drawing.Point(434, 0);
-			this.Visible24H.Name = "Visible24H";
-			this.Visible24H.Size = new System.Drawing.Size(62, 15);
-			this.Visible24H.TabIndex = 9;
-			this.Visible24H.Tag = "7";
-			this.Visible24H.Text = "21~24h";
-			this.Visible24H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible24H.UseSelectable = true;
-			this.Visible24H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.metroRadioButton6.AutoSize = true;
+			this.metroRadioButton6.Location = new System.Drawing.Point(952, 0);
+			this.metroRadioButton6.Name = "metroRadioButton6";
+			this.metroRadioButton6.Size = new System.Drawing.Size(90, 15);
+			this.metroRadioButton6.TabIndex = 15;
+			this.metroRadioButton6.Text = "timeslot_24h";
+			this.metroRadioButton6.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.metroRadioButton6.UseSelectable = true;
 			// 
 			// Component
 			// 
@@ -482,6 +678,9 @@
 			this.Text = "KETI";
 			this.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Header.ResumeLayout(false);
+			this.SeasonPanel.ResumeLayout(false);
+			this.SeasonControlTabs.ResumeLayout(false);
+			this.metroPanel1.ResumeLayout(false);
 			this.DayTabs.ResumeLayout(false);
 			this.Footer.ResumeLayout(false);
 			this.Body.ResumeLayout(false);
@@ -496,14 +695,6 @@
 		private MetroFramework.Controls.MetroPanel Header;
 		private MetroFramework.Controls.MetroPanel Footer;
 		private MetroFramework.Controls.MetroPanel Body;
-		private MetroFramework.Controls.MetroTabControl DayTabs;
-		private MetroFramework.Controls.MetroTabPage Sun;
-		private MetroFramework.Controls.MetroTabPage Tue;
-		private MetroFramework.Controls.MetroTabPage Wed;
-		private MetroFramework.Controls.MetroTabPage Thu;
-		private MetroFramework.Controls.MetroTabPage Fri;
-		private MetroFramework.Controls.MetroTabPage Sat;
-		private MetroFramework.Controls.MetroTabPage Mon;
 		private MetroFramework.Controls.MetroTextBox UIDSearch;
 		private MetroFramework.Controls.MetroProgressSpinner Spinner;
 		private MetroFramework.Controls.MetroButton LoadBtn;
@@ -518,6 +709,27 @@
 		private MetroFramework.Controls.MetroCheckBox Visible9H;
 		private MetroFramework.Controls.MetroCheckBox Visible6H;
 		private MetroFramework.Controls.MetroCheckBox Visible3H;
+		private MetroFramework.Controls.MetroPanel metroPanel1;
+		private MetroFramework.Controls.MetroPanel SeasonPanel;
+		private MetroFramework.Controls.MetroTabControl DayTabs;
+		private MetroFramework.Controls.MetroTabPage Sun;
+		private MetroFramework.Controls.MetroTabPage Sat;
+		private MetroFramework.Controls.MetroTabPage Mon;
+		private MetroFramework.Controls.MetroTabPage Tue;
+		private MetroFramework.Controls.MetroTabPage Wed;
+		private MetroFramework.Controls.MetroTabPage Thu;
+		private MetroFramework.Controls.MetroTabPage Fri;
+		private MetroFramework.Controls.MetroTabControl SeasonControlTabs;
+		private MetroFramework.Controls.MetroTabPage Spring;
+		private MetroFramework.Controls.MetroTabPage Summer;
+		private MetroFramework.Controls.MetroTabPage Autumn;
+		private MetroFramework.Controls.MetroTabPage Winter;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton6;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton5;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
+		private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
 	}
 }
 

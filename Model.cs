@@ -82,7 +82,7 @@ namespace MetroUI
 				dateList.ForEach(async currentDay =>
 				{
 					Data clusterTmp = null;
-					string path = System.Windows.Forms.Application.StartupPath + @"\data\clustering_" + currentDay.ToString("yyyyMMdd") + ".csv";
+					string path = System.Windows.Forms.Application.StartupPath + @"\timeslot_3h\clustering_" + currentDay.ToString("yyyyMMdd") + ".csv";
 					StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
 
 					while (!sr.EndOfStream)
