@@ -119,7 +119,7 @@ namespace MetroUI
 		}
 		public void RequestDayData(int dayIdx, bool isNotify = true)
 		{
-			List<PowerFrequency>[] pfList = new List<PowerFrequency>[8];
+			List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 
 			for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
 			{

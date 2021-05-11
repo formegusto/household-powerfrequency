@@ -71,7 +71,6 @@ namespace MetroUI
 				int startHours = 0;
 				for (int p = 0; p < pf.Length; p++)
 				{
-
 					ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
 					pf[p].ForEach((pp) =>
 					{
