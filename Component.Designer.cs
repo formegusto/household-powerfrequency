@@ -49,6 +49,12 @@
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
 			this.Body = new MetroFramework.Controls.MetroPanel();
 			this.CheckBoxContainer = new MetroFramework.Controls.MetroPanel();
+			this.Timeslot_24h = new MetroFramework.Controls.MetroRadioButton();
+			this.Timeslot_12h = new MetroFramework.Controls.MetroRadioButton();
+			this.Timeslot_8h = new MetroFramework.Controls.MetroRadioButton();
+			this.Timeslot_6h = new MetroFramework.Controls.MetroRadioButton();
+			this.Timeslot_4h = new MetroFramework.Controls.MetroRadioButton();
+			this.Timeslot_3h = new MetroFramework.Controls.MetroRadioButton();
 			this.Visible24H = new MetroFramework.Controls.MetroCheckBox();
 			this.Visible21H = new MetroFramework.Controls.MetroCheckBox();
 			this.Visible18H = new MetroFramework.Controls.MetroCheckBox();
@@ -60,12 +66,6 @@
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
-			this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
-			this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
-			this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
-			this.metroRadioButton4 = new MetroFramework.Controls.MetroRadioButton();
-			this.metroRadioButton5 = new MetroFramework.Controls.MetroRadioButton();
-			this.metroRadioButton6 = new MetroFramework.Controls.MetroRadioButton();
 			this.Header.SuspendLayout();
 			this.SeasonPanel.SuspendLayout();
 			this.SeasonControlTabs.SuspendLayout();
@@ -413,12 +413,12 @@
 			// 
 			// CheckBoxContainer
 			// 
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton6);
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton5);
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton4);
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton3);
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton2);
-			this.CheckBoxContainer.Controls.Add(this.metroRadioButton1);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_24h);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_12h);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_8h);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_6h);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_4h);
+			this.CheckBoxContainer.Controls.Add(this.Timeslot_3h);
 			this.CheckBoxContainer.Controls.Add(this.Visible24H);
 			this.CheckBoxContainer.Controls.Add(this.Visible21H);
 			this.CheckBoxContainer.Controls.Add(this.Visible18H);
@@ -439,6 +439,86 @@
 			this.CheckBoxContainer.VerticalScrollbarBarColor = true;
 			this.CheckBoxContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.CheckBoxContainer.VerticalScrollbarSize = 10;
+			// 
+			// Timeslot_24h
+			// 
+			this.Timeslot_24h.AutoSize = true;
+			this.Timeslot_24h.Location = new System.Drawing.Point(952, 0);
+			this.Timeslot_24h.Name = "Timeslot_24h";
+			this.Timeslot_24h.Size = new System.Drawing.Size(90, 15);
+			this.Timeslot_24h.TabIndex = 15;
+			this.Timeslot_24h.Tag = "24";
+			this.Timeslot_24h.Text = "timeslot_24h";
+			this.Timeslot_24h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_24h.UseSelectable = true;
+			this.Timeslot_24h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
+			// 
+			// Timeslot_12h
+			// 
+			this.Timeslot_12h.AutoSize = true;
+			this.Timeslot_12h.Location = new System.Drawing.Point(862, 0);
+			this.Timeslot_12h.Name = "Timeslot_12h";
+			this.Timeslot_12h.Size = new System.Drawing.Size(90, 15);
+			this.Timeslot_12h.TabIndex = 14;
+			this.Timeslot_12h.Tag = "12";
+			this.Timeslot_12h.Text = "timeslot_12h";
+			this.Timeslot_12h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_12h.UseSelectable = true;
+			this.Timeslot_12h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
+			// 
+			// Timeslot_8h
+			// 
+			this.Timeslot_8h.AutoSize = true;
+			this.Timeslot_8h.Location = new System.Drawing.Point(772, 0);
+			this.Timeslot_8h.Name = "Timeslot_8h";
+			this.Timeslot_8h.Size = new System.Drawing.Size(84, 15);
+			this.Timeslot_8h.TabIndex = 13;
+			this.Timeslot_8h.Tag = "8";
+			this.Timeslot_8h.Text = "timeslot_8h";
+			this.Timeslot_8h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_8h.UseSelectable = true;
+			this.Timeslot_8h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
+			// 
+			// Timeslot_6h
+			// 
+			this.Timeslot_6h.AutoSize = true;
+			this.Timeslot_6h.Location = new System.Drawing.Point(682, 0);
+			this.Timeslot_6h.Name = "Timeslot_6h";
+			this.Timeslot_6h.Size = new System.Drawing.Size(84, 15);
+			this.Timeslot_6h.TabIndex = 12;
+			this.Timeslot_6h.Tag = "6";
+			this.Timeslot_6h.Text = "timeslot_6h";
+			this.Timeslot_6h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_6h.UseSelectable = true;
+			this.Timeslot_6h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
+			// 
+			// Timeslot_4h
+			// 
+			this.Timeslot_4h.AutoSize = true;
+			this.Timeslot_4h.Location = new System.Drawing.Point(592, 0);
+			this.Timeslot_4h.Name = "Timeslot_4h";
+			this.Timeslot_4h.Size = new System.Drawing.Size(84, 15);
+			this.Timeslot_4h.TabIndex = 11;
+			this.Timeslot_4h.Tag = "4";
+			this.Timeslot_4h.Text = "timeslot_4h";
+			this.Timeslot_4h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_4h.UseSelectable = true;
+			this.Timeslot_4h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
+			// 
+			// Timeslot_3h
+			// 
+			this.Timeslot_3h.AutoSize = true;
+			this.Timeslot_3h.Checked = true;
+			this.Timeslot_3h.Location = new System.Drawing.Point(502, 0);
+			this.Timeslot_3h.Name = "Timeslot_3h";
+			this.Timeslot_3h.Size = new System.Drawing.Size(84, 15);
+			this.Timeslot_3h.TabIndex = 10;
+			this.Timeslot_3h.TabStop = true;
+			this.Timeslot_3h.Tag = "3";
+			this.Timeslot_3h.Text = "timeslot_3h";
+			this.Timeslot_3h.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Timeslot_3h.UseSelectable = true;
+			this.Timeslot_3h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
 			// 
 			// Visible24H
 			// 
@@ -598,72 +678,6 @@
 			this.ChartContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.VerticalScrollbarSize = 10;
 			// 
-			// metroRadioButton1
-			// 
-			this.metroRadioButton1.AutoSize = true;
-			this.metroRadioButton1.Location = new System.Drawing.Point(502, 0);
-			this.metroRadioButton1.Name = "metroRadioButton1";
-			this.metroRadioButton1.Size = new System.Drawing.Size(84, 15);
-			this.metroRadioButton1.TabIndex = 10;
-			this.metroRadioButton1.Text = "timeslot_3h";
-			this.metroRadioButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton1.UseSelectable = true;
-			// 
-			// metroRadioButton2
-			// 
-			this.metroRadioButton2.AutoSize = true;
-			this.metroRadioButton2.Location = new System.Drawing.Point(592, 0);
-			this.metroRadioButton2.Name = "metroRadioButton2";
-			this.metroRadioButton2.Size = new System.Drawing.Size(84, 15);
-			this.metroRadioButton2.TabIndex = 11;
-			this.metroRadioButton2.Text = "timeslot_4h";
-			this.metroRadioButton2.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton2.UseSelectable = true;
-			// 
-			// metroRadioButton3
-			// 
-			this.metroRadioButton3.AutoSize = true;
-			this.metroRadioButton3.Location = new System.Drawing.Point(682, 0);
-			this.metroRadioButton3.Name = "metroRadioButton3";
-			this.metroRadioButton3.Size = new System.Drawing.Size(84, 15);
-			this.metroRadioButton3.TabIndex = 12;
-			this.metroRadioButton3.Text = "timeslot_6h";
-			this.metroRadioButton3.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton3.UseSelectable = true;
-			// 
-			// metroRadioButton4
-			// 
-			this.metroRadioButton4.AutoSize = true;
-			this.metroRadioButton4.Location = new System.Drawing.Point(772, 0);
-			this.metroRadioButton4.Name = "metroRadioButton4";
-			this.metroRadioButton4.Size = new System.Drawing.Size(84, 15);
-			this.metroRadioButton4.TabIndex = 13;
-			this.metroRadioButton4.Text = "timeslot_8h";
-			this.metroRadioButton4.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton4.UseSelectable = true;
-			// 
-			// metroRadioButton5
-			// 
-			this.metroRadioButton5.AutoSize = true;
-			this.metroRadioButton5.Location = new System.Drawing.Point(862, 0);
-			this.metroRadioButton5.Name = "metroRadioButton5";
-			this.metroRadioButton5.Size = new System.Drawing.Size(90, 15);
-			this.metroRadioButton5.TabIndex = 14;
-			this.metroRadioButton5.Text = "timeslot_12h";
-			this.metroRadioButton5.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton5.UseSelectable = true;
-			// 
-			// metroRadioButton6
-			// 
-			this.metroRadioButton6.AutoSize = true;
-			this.metroRadioButton6.Location = new System.Drawing.Point(952, 0);
-			this.metroRadioButton6.Name = "metroRadioButton6";
-			this.metroRadioButton6.Size = new System.Drawing.Size(90, 15);
-			this.metroRadioButton6.TabIndex = 15;
-			this.metroRadioButton6.Text = "timeslot_24h";
-			this.metroRadioButton6.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.metroRadioButton6.UseSelectable = true;
-			// 
 			// Component
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -724,12 +738,12 @@
 		private MetroFramework.Controls.MetroTabPage Summer;
 		private MetroFramework.Controls.MetroTabPage Autumn;
 		private MetroFramework.Controls.MetroTabPage Winter;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton6;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton5;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
-		private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_3h;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_24h;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_12h;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_8h;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_6h;
+		private MetroFramework.Controls.MetroRadioButton Timeslot_4h;
 	}
 }
 

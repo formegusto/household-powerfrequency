@@ -14,6 +14,7 @@ namespace MetroUI.Common
 	public static class VIEW_ACTIONS
 	{
 		public const string CHANGE_KEYWORD = "change_keyword";
+		public const string CHANGE_TIMESLOT = "change_timeslot";
 		public const string REQUEST_DAYDATA = "request_daydata/pending";
 		public const string REQUEST_DAYDATA_SUCCESS = "request_daydata/success";
 		public const string REQUEST_DAYDATA_FAILURE = "request_daydata/failure";

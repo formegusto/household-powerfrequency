@@ -25,6 +25,10 @@ namespace MetroUI
 					this.model.ChangeKeyword(e.keyword);
 
 					break;
+				case VIEW_ACTIONS.CHANGE_TIMESLOT:
+					this.model.ChangeTimeslot(e.timeslot);
+
+					break;
 				case VIEW_ACTIONS.REQUEST_DAYDATA:
 					this.model.RequestDayData(e.dayIdx);
 

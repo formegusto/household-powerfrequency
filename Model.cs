@@ -40,20 +40,22 @@ namespace MetroUI
 	{
 		void Attach(IModelObserver observer);
 		void ChangeKeyword(string keyword);
+		void ChangeTimeslot(TimeSlot timeslot);
 		void LoadExcel();
 		void RequestDayData(int dayIdx, bool isNotify = true);
 	}
 	public class DayClusterModel: IModel
 	{
 		public event ModelHandler<DayClusterModel> changed;
-
 		public string keyword;
+		public TimeSlot timeslot;
 		public List<DayData>[] dayStore;
 		public List<PowerFrequency>[] powerFrequencies;
 
 		public DayClusterModel()
 		{
 			this.keyword = "";
+			this.timeslot = TimeSlot.timeslot_3h;
 		}
 
 		public void Attach(IModelObserver imo)
@@ -61,6 +63,7 @@ namespace MetroUI
 			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);
 		}
 		public void ChangeKeyword(string k) => this.keyword = k;
+		public void ChangeTimeslot(TimeSlot t) => this.timeslot = t;
 		public async void LoadExcel()
 		{
 			Console.WriteLine(string.Format("{0} ---- ExcelLoadStart", this.keyword.Trim()));

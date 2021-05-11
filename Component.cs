@@ -88,6 +88,17 @@ namespace MetroUI
 			}));
 		}
 		private void LoadBtn_Click(object sender, EventArgs e) => this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
+		private void Timeslot_Changed(object sender, EventArgs e) 
+		{
+			MetroFramework.Controls.MetroRadioButton actionBtn = ((MetroFramework.Controls.MetroRadioButton)sender);
+			if (actionBtn.Checked)
+			{
+				string tag = actionBtn.Tag.ToString();
+				TimeSlot timeslot = (TimeSlot)int.Parse(tag);
+
+				this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_TIMESLOT, timeslot));
+			}
+		}
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, e.TabPageIndex));
 		private void Visible_Toggled(object sender, EventArgs e)
