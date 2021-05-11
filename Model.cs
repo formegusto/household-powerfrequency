@@ -85,7 +85,7 @@ namespace MetroUI
 				dateList.ForEach(async currentDay =>
 				{
 					Data clusterTmp = null;
-					string path = System.Windows.Forms.Application.StartupPath + @"\timeslot_3h\clustering_" + currentDay.ToString("yyyyMMdd") + ".csv";
+					string path = System.Windows.Forms.Application.StartupPath + @"\" + this.timeslot + @"\clustering_" + currentDay.ToString("yyyyMMdd") + ".csv";
 					StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
 
 					while (!sr.EndOfStream)
@@ -126,22 +126,23 @@ namespace MetroUI
 				pfList[p] = new List<PowerFrequency>();
 			}
 
-			this.dayStore[dayIdx].ForEach((d) =>
+			for(int d = 0; d < this.dayStore[dayIdx].Count; d++)
 			{
-				for (int t = 0; t < d.data.timeSlot.Length; t++)
+				for (int t = 0; t < this.dayStore[dayIdx][d].data.timeSlot.Length; t++)
 				{
-					PowerFrequency findPf = pfList[t].Find((pf) => pf.wh == Math.Floor((Math.Round(d.data.timeSlot[t] / 10) * 10) / 50) * 50);
+					PowerFrequency findPf = pfList[t].Find(
+						(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
 
 					if (findPf == null)
 					{
-						pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(d.data.timeSlot[t] / 10) * 10) / 50) * 50));
+						pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
 					}
 					else
 					{
 						findPf.IncFrequency();
 					}
 				}
-			});
+			}
 
 			for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
 				pfList[p].Sort();
