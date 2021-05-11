@@ -219,6 +219,7 @@
 			this.DayTabs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.DayTabs.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.DayTabs.UseSelectable = true;
+			this.DayTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.DayTabs_Selected);
 			// 
 			// Sun
 			// 
