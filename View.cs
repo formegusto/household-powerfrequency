@@ -13,6 +13,7 @@ namespace MetroUI
 		public string action;
 		public string keyword;
 		public TimeSlot timeslot;
+		public Season season;
 		public int dayIdx;
 		public ViewEventArgs(string a)
 		{
@@ -32,6 +33,11 @@ namespace MetroUI
 		{
 			this.action = a;
 			this.timeslot = t;
+		}
+		public ViewEventArgs(string a, Season s)
+		{
+			this.action = a;
+			this.season = s;
 		}
 	}
 	public interface IView

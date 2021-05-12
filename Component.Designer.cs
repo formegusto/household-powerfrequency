@@ -31,9 +31,10 @@
 			this.Header = new MetroFramework.Controls.MetroPanel();
 			this.SeasonPanel = new MetroFramework.Controls.MetroPanel();
 			this.SeasonControlTabs = new MetroFramework.Controls.MetroTabControl();
+			this.All = new MetroFramework.Controls.MetroTabPage();
 			this.Spring = new MetroFramework.Controls.MetroTabPage();
-			this.Summer = new MetroFramework.Controls.MetroTabPage();
 			this.Autumn = new MetroFramework.Controls.MetroTabPage();
+			this.Summer = new MetroFramework.Controls.MetroTabPage();
 			this.Winter = new MetroFramework.Controls.MetroTabPage();
 			this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
 			this.DayTabs = new MetroFramework.Controls.MetroTabControl();
@@ -110,20 +111,38 @@
 			this.SeasonPanel.VerticalScrollbarSize = 10;
 			// 
 			// SeasonControlTabs
-			// 
+			//
+			this.SeasonControlTabs.Controls.Add(this.All);
+			
 			this.SeasonControlTabs.Controls.Add(this.Spring);
 			this.SeasonControlTabs.Controls.Add(this.Summer);
 			this.SeasonControlTabs.Controls.Add(this.Autumn);
 			this.SeasonControlTabs.Controls.Add(this.Winter);
+
 			this.SeasonControlTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.SeasonControlTabs.ItemSize = new System.Drawing.Size(54, 34);
 			this.SeasonControlTabs.Location = new System.Drawing.Point(0, 0);
 			this.SeasonControlTabs.Name = "SeasonControlTabs";
-			this.SeasonControlTabs.SelectedIndex = 3;
+			this.SeasonControlTabs.SelectedIndex = 0;
 			this.SeasonControlTabs.Size = new System.Drawing.Size(290, 50);
 			this.SeasonControlTabs.TabIndex = 11;
 			this.SeasonControlTabs.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.SeasonControlTabs.UseSelectable = true;
+			// 
+			// All
+			// 
+			this.All.HorizontalScrollbarBarColor = true;
+			this.All.HorizontalScrollbarHighlightOnWheel = false;
+			this.All.HorizontalScrollbarSize = 10;
+			this.All.Location = new System.Drawing.Point(4, 38);
+			this.All.Name = "All";
+			this.All.Size = new System.Drawing.Size(282, 8);
+			this.All.TabIndex = 4;
+			this.All.Text = "All";
+			this.All.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.All.VerticalScrollbarBarColor = true;
+			this.All.VerticalScrollbarHighlightOnWheel = false;
+			this.All.VerticalScrollbarSize = 10;
 			// 
 			// Spring
 			// 
@@ -140,21 +159,6 @@
 			this.Spring.VerticalScrollbarHighlightOnWheel = false;
 			this.Spring.VerticalScrollbarSize = 10;
 			// 
-			// Summer
-			// 
-			this.Summer.HorizontalScrollbarBarColor = true;
-			this.Summer.HorizontalScrollbarHighlightOnWheel = false;
-			this.Summer.HorizontalScrollbarSize = 10;
-			this.Summer.Location = new System.Drawing.Point(4, 38);
-			this.Summer.Name = "Summer";
-			this.Summer.Size = new System.Drawing.Size(282, 8);
-			this.Summer.TabIndex = 1;
-			this.Summer.Text = "Summer";
-			this.Summer.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Summer.VerticalScrollbarBarColor = true;
-			this.Summer.VerticalScrollbarHighlightOnWheel = false;
-			this.Summer.VerticalScrollbarSize = 10;
-			// 
 			// Autumn
 			// 
 			this.Autumn.HorizontalScrollbarBarColor = true;
@@ -169,6 +173,21 @@
 			this.Autumn.VerticalScrollbarBarColor = true;
 			this.Autumn.VerticalScrollbarHighlightOnWheel = false;
 			this.Autumn.VerticalScrollbarSize = 10;
+			// 
+			// Summer
+			// 
+			this.Summer.HorizontalScrollbarBarColor = true;
+			this.Summer.HorizontalScrollbarHighlightOnWheel = false;
+			this.Summer.HorizontalScrollbarSize = 10;
+			this.Summer.Location = new System.Drawing.Point(4, 38);
+			this.Summer.Name = "Summer";
+			this.Summer.Size = new System.Drawing.Size(282, 8);
+			this.Summer.TabIndex = 1;
+			this.Summer.Text = "Summer";
+			this.Summer.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Summer.VerticalScrollbarBarColor = true;
+			this.Summer.VerticalScrollbarHighlightOnWheel = false;
+			this.Summer.VerticalScrollbarSize = 10;
 			// 
 			// Winter
 			// 
@@ -744,6 +763,7 @@
 		private MetroFramework.Controls.MetroRadioButton Timeslot_8h;
 		private MetroFramework.Controls.MetroRadioButton Timeslot_6h;
 		private MetroFramework.Controls.MetroRadioButton Timeslot_4h;
+		private MetroFramework.Controls.MetroTabPage All;
 	}
 }
 

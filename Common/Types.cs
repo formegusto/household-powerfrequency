@@ -15,4 +15,13 @@ namespace MetroUI.Common
 		timeslot_12h = 12,
 		timeslot_24h = 24
 	}
+
+	public enum Season
+	{
+		ALL,
+		SPRING,
+		SUMMER,
+		AUTUMN,
+		WINTER
+	}
 }
