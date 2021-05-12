@@ -222,12 +222,12 @@
 			// DayTabs
 			// 
 			this.DayTabs.Controls.Add(this.Sun);
-			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Controls.Add(this.Mon);
 			this.DayTabs.Controls.Add(this.Tue);
 			this.DayTabs.Controls.Add(this.Wed);
 			this.DayTabs.Controls.Add(this.Thu);
 			this.DayTabs.Controls.Add(this.Fri);
+			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DayTabs.Location = new System.Drawing.Point(0, 0);
 			this.DayTabs.Name = "DayTabs";
