@@ -72,7 +72,7 @@ namespace MetroUI
 					
 					Task.Run(() =>
 					{
-						ConfigChart(e.powerFrequencies, e.timeslot);
+						ConfigChart(e.powerFrequencies, e.clusterPowerFrequencies, e.timeslot);
 					});
 
 					this.ChartContainer.Controls.Add(this.Chart);
@@ -86,7 +86,7 @@ namespace MetroUI
 					break;
 			}
 		}
-		public void ConfigChart(List<PowerFrequency>[] pf, TimeSlot ts)
+		public void ConfigChart(List<PowerFrequency>[] pf, List<PowerFrequency>[] cpf, TimeSlot ts)
 		{
 			this.Invoke((System.Action)( () => {
 				int startHours = 0;
@@ -108,6 +108,25 @@ namespace MetroUI
 					this.VisibleGroup[p].Text = string.Format("{0}~{1}h", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts));
 					this.CheckBoxContainer.Controls.Add(this.VisibleGroup[p]);
 				}
+				/*
+				startHours = 0;
+				for (int p = 0; p < cpf.Length; p++)
+				{
+					ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
+					cpf[p].ForEach((pp) =>
+					{
+						cv.Add(new ObservablePoint(pp.wh, pp.frequency));
+					});
+
+					LineSeries ls = new LineSeries
+					{
+						Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours + TimeSlotUtils.TimeSlotToHours(ts)),
+						Values = cv
+					};
+
+					this.Chart.Series.Add(ls);
+				}
+				*/
 			}));
 		}
 		private void Clear_Visible() => this.Invoke((System.Action)(() =>

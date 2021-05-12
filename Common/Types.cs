@@ -18,10 +18,10 @@ namespace MetroUI.Common
 
 	public enum Season
 	{
-		ALL,
-		SPRING,
-		SUMMER,
-		AUTUMN,
-		WINTER
+		ALL = 0,
+		SPRING = 1,
+		SUMMER = 2,
+		AUTUMN = 3,
+		WINTER = 4
 	}
 }
