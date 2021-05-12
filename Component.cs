@@ -62,8 +62,7 @@ namespace MetroUI
 
 					break;
 				case MODEL_ACTIONS.LOAD_EXCEL_SUCCESS:
-					this.DayTabs.SelectTab(0);
-					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, 0));
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, this.DayTabs.SelectedIndex));
 
 					break;
 				case VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS:
@@ -132,7 +131,6 @@ namespace MetroUI
 		}
 		private void SeasonTabs_Selected(object sender, TabControlEventArgs e)
 		{
-			MetroFramework.MetroMessageBox.Show(this, "안내", "테스트입니다.");
 			Season selectedSeason =  Season.ALL;
 
 			switch (e.TabPageIndex)

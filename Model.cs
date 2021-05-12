@@ -51,6 +51,7 @@ namespace MetroUI
 	{
 		public event ModelHandler<DayClusterModel> changed;
 		public string keyword;
+		public bool isLoaded;
 		public TimeSlot timeslot;
 		public Season season;
 		public List<DayData>[] dayStore;
@@ -59,6 +60,7 @@ namespace MetroUI
 		public DayClusterModel()
 		{
 			this.keyword = "";
+			this.isLoaded = false;
 			this.timeslot = TimeSlot.timeslot_3h;
 			this.season = Season.ALL;
 		}
@@ -76,6 +78,7 @@ namespace MetroUI
 			this.dayStore = new List<DayData>[7];
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
 
+			this.isLoaded = false;
 			for (int i = 0; i < 7; i++)
 				this.dayStore[i] = new List<DayData>();
 
@@ -113,50 +116,54 @@ namespace MetroUI
 				});
 			});
 
+			this.isLoaded = true;
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
 			this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
 		}
 		public void RequestDayData(int dayIdx, bool isNotify = true)
 		{
-			List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
-
-			for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
+			if (this.isLoaded)
 			{
-				pfList[p] = new List<PowerFrequency>();
-			}
+				List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 
-			for(int d = 0; d < this.dayStore[dayIdx].Count; d++)
-			{
-				for (int t = 0; t < this.dayStore[dayIdx][d].data.timeSlot.Length; t++)
+				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
 				{
-					PowerFrequency findPf = pfList[t].Find(
-						(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
+					pfList[p] = new List<PowerFrequency>();
+				}
 
-					if (findPf == null)
+				for (int d = 0; d < this.dayStore[dayIdx].Count; d++)
+				{
+					for (int t = 0; t < this.dayStore[dayIdx][d].data.timeSlot.Length; t++)
 					{
-						pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
-					}
-					else
-					{
-						findPf.IncFrequency();
+						PowerFrequency findPf = pfList[t].Find(
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
+
+						if (findPf == null)
+						{
+							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
+						}
+						else
+						{
+							findPf.IncFrequency();
+						}
 					}
 				}
-			}
 
-			for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
-				pfList[p].Sort();
+				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
+					pfList[p].Sort();
 
-			for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
-			{
-				pfList[p].ForEach((pf) =>
+				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
 				{
-					Console.WriteLine(pf.ToString());
-				});
-			}
+					pfList[p].ForEach((pf) =>
+					{
+						Console.WriteLine(pf.ToString());
+					});
+				}
 
-			this.powerFrequencies = pfList;
-			if (isNotify)
-				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.timeslot));
+				this.powerFrequencies = pfList;
+				if (isNotify)
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.timeslot));
+			}
 		}
 	}
 }
