@@ -24,10 +24,24 @@ namespace MetroUI
 	public partial class Component : MetroFramework.Forms.MetroForm, IView, IModelObserver
 	{
 		public event ViewHandler<IView> changed;
+		public List<MetroFramework.Controls.MetroCheckBox> VisibleGroup;
 		IController controller;
 		public Component()
 		{
 			InitializeComponent();
+
+			this.VisibleGroup = new List<MetroFramework.Controls.MetroCheckBox>();
+			//
+			// VisibleGroup
+			//
+			this.VisibleGroup.Add(Visible_1);
+			this.VisibleGroup.Add(Visible_2);
+			this.VisibleGroup.Add(Visible_3);
+			this.VisibleGroup.Add(Visible_4);
+			this.VisibleGroup.Add(Visible_5);
+			this.VisibleGroup.Add(Visible_6);
+			this.VisibleGroup.Add(Visible_7);
+			this.VisibleGroup.Add(Visible_8);
 		}
 		public void SetController(IController controller)
 		{
@@ -56,6 +70,7 @@ namespace MetroUI
 					this.Chart.AxisX.Clear();
 					this.Chart.Series.Clear();
 					this.ChartContainer.Controls.Add(this.Chart);
+					
 					Task.Run(() =>
 					{
 						ConfigChart(e.powerFrequencies, e.timeslot);
@@ -80,14 +95,30 @@ namespace MetroUI
 
 					LineSeries ls = new LineSeries
 					{
-						Title = string.Format("{0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
+						Title = string.Format("{0}~{1}h Power Frequency", startHours, startHours + TimeSlotUtils.TimeSlotToHours(ts)),
 						Values = cv
 					};
 					this.Chart.Series.Add(ls);
+					this.VisibleGroup[p].Checked = true;
+					this.VisibleGroup[p].Text = string.Format("{0}~{1}h", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts));
+					this.CheckBoxContainer.Controls.Add(this.VisibleGroup[p]);
 				}
 			}));
 		}
-		private void LoadBtn_Click(object sender, EventArgs e) => this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
+		private void Clear_Visible() => this.Invoke((System.Action)(() =>
+		   {
+			   this.VisibleGroup.ForEach((v) =>
+			   {
+				   if (this.CheckBoxContainer.Controls.Contains(v))
+				   {
+					   this.CheckBoxContainer.Controls.Remove(v);
+				   }
+			   });
+		   }));
+		private void LoadBtn_Click(object sender, EventArgs e) {
+			Clear_Visible();
+			this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);
+		}
 		private void Timeslot_Changed(object sender, EventArgs e) 
 		{
 			MetroFramework.Controls.MetroRadioButton actionBtn = ((MetroFramework.Controls.MetroRadioButton)sender);
@@ -101,6 +132,7 @@ namespace MetroUI
 		}
 		private void SeasonTabs_Selected(object sender, TabControlEventArgs e)
 		{
+			MetroFramework.MetroMessageBox.Show(this, "안내", "테스트입니다.");
 			Season selectedSeason =  Season.ALL;
 
 			switch (e.TabPageIndex)
