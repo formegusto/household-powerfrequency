@@ -72,23 +72,16 @@ namespace MetroUI
 		public void ChangeSeason(Season s) => this.season = s;
 		public async void LoadExcel()
 		{
-			Console.WriteLine(string.Format("{0} ---- ExcelLoadStart", this.keyword.Trim()));
+			Console.WriteLine(string.Format("{0} {1} ---- ExcelLoadStart", this.keyword.Trim(), this.season));
 			this.dayStore = new List<DayData>[7];
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
-
-			DateTime startDate = new DateTime(2018, 5, 1);
-			DateTime endDate = new DateTime(2019, 4, 29);
-			List<DateTime> dateList = new List<DateTime>();
 
 			for (int i = 0; i < 7; i++)
 				this.dayStore[i] = new List<DayData>();
 
-			for (DateTime day = startDate; day <= endDate; day = day.AddDays(1))
-				dateList.Add(day);
-
 			await Task.Run(() =>
 			{
-				dateList.ForEach(async currentDay =>
+				SeasonUtils.SeasonToDate(this.season).ForEach(async currentDay =>
 				{
 					Data clusterTmp = null;
 					string path = System.Windows.Forms.Application.StartupPath + @"\" + this.timeslot + @"\clustering_" + currentDay.ToString("yyyyMMdd") + ".csv";
@@ -102,7 +95,7 @@ namespace MetroUI
 						if (uid.Contains("cluster"))
 							clusterTmp = new Data(line.Split(',').ToList());
 
-						if (clusterTmp != null && uid == this.keyword)
+						if (clusterTmp != null && uid == this.keyword.Trim())
 						{
 							this.dayStore[DateUtils.DayToIndex(currentDay)].Add(new DayData(
 								clusterTmp,

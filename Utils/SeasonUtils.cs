@@ -9,9 +9,9 @@ namespace MetroUI.Utils
 {
 	public class SeasonUtils
 	{
-		public static DateTime[] SeasonToDate(Season s)
+		public static List<DateTime> SeasonToDate(Season s)
 		{
-			List<DateTime> dates = null;
+			List<DateTime> dates = new List<DateTime>();
 			List<int> targetMonth = null;
 
 			switch(s)
@@ -64,10 +64,18 @@ namespace MetroUI.Utils
 			{
 				int month = d.Month;
 				int test = targetMonth.Find(tm => tm == month);
-				Console.WriteLine(test);
+				if(test != 0)
+				{
+					DateTime seasonStartTime = new DateTime(d.Year, d.Month, d.Day);
+					for(DateTime dd = seasonStartTime; dd.Month == seasonStartTime.Month; dd = dd.AddDays(1))
+					{
+						if(dd <= endTime)
+							dates.Add(dd);
+					}
+				}
 			}
 
-			return dates.ToArray();
+			return dates;
 		}
 	}
 }

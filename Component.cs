@@ -99,7 +99,31 @@ namespace MetroUI
 				this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_TIMESLOT, timeslot));
 			}
 		}
-		private void SeasonTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON));
+		private void SeasonTabs_Selected(object sender, TabControlEventArgs e)
+		{
+			Season selectedSeason =  Season.ALL;
+
+			switch (e.TabPageIndex)
+			{
+				case 0:
+					selectedSeason = Season.ALL;
+					break;
+				case 1:
+					selectedSeason = Season.SPRING;
+					break;
+				case 2:
+					selectedSeason = Season.SUMMER;
+					break;
+				case 3:
+					selectedSeason = Season.AUTUMN;
+					break;
+				case 4:
+					selectedSeason = Season.WINTER;
+					break;
+			}
+
+			this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON, selectedSeason));
+		}
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, e.TabPageIndex));
 		private void Visible_Toggled(object sender, EventArgs e)
