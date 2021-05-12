@@ -27,5 +27,7 @@ namespace MetroUI.Common
 		public const string LOAD_EXCEL_SUCCESS = "load_excel/sucess";
 		public const string LOAD_EXCEL_FAILURE = "load_excel/failure";
 		public const string LOAD_EXCEL_NOT_FOUND = "load_excel/notfound";
+
+		public const string REQUIRE_RELOAD = "require_reload";
 	}
 }

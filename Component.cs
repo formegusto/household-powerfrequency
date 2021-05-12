@@ -68,13 +68,19 @@ namespace MetroUI
 				case VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS:
 					this.Chart.AxisX.Clear();
 					this.Chart.Series.Clear();
-					this.ChartContainer.Controls.Add(this.Chart);
+					
 					
 					Task.Run(() =>
 					{
 						ConfigChart(e.powerFrequencies, e.timeslot);
 					});
-					
+
+					this.ChartContainer.Controls.Add(this.Chart);
+
+					break;
+				case MODEL_ACTIONS.REQUIRE_RELOAD:
+					LoadBtn_Click(null, null);
+
 					break;
 				default:
 					break;

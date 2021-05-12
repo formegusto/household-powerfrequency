@@ -70,8 +70,17 @@ namespace MetroUI
 			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);
 		}
 		public void ChangeKeyword(string k) => this.keyword = k;
-		public void ChangeTimeslot(TimeSlot t) => this.timeslot = t;
-		public void ChangeSeason(Season s) => this.season = s;
+		public void ChangeTimeslot(TimeSlot t)
+		{
+			this.timeslot = t;
+			if(this.isLoaded)
+				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.REQUIRE_RELOAD));
+		}
+		public void ChangeSeason(Season s) {
+			this.season = s;
+			if (this.isLoaded)
+				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.REQUIRE_RELOAD));
+		}
 		public async void LoadExcel()
 		{
 			Console.WriteLine(string.Format("{0} {1} ---- ExcelLoadStart", this.keyword.Trim(), this.season));
