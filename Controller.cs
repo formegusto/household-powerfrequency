@@ -29,6 +29,10 @@ namespace MetroUI
 					this.model.ChangeTimeslot(e.timeslot);
 
 					break;
+				case VIEW_ACTIONS.CHANGE_SEASON:
+					this.model.ChangeSeason(e.season);
+
+					break;
 				case VIEW_ACTIONS.REQUEST_DAYDATA:
 					this.model.RequestDayData(e.dayIdx);
 

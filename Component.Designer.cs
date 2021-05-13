@@ -31,6 +31,7 @@
 			this.Header = new MetroFramework.Controls.MetroPanel();
 			this.SeasonPanel = new MetroFramework.Controls.MetroPanel();
 			this.SeasonControlTabs = new MetroFramework.Controls.MetroTabControl();
+			this.All = new MetroFramework.Controls.MetroTabPage();
 			this.Spring = new MetroFramework.Controls.MetroTabPage();
 			this.Summer = new MetroFramework.Controls.MetroTabPage();
 			this.Autumn = new MetroFramework.Controls.MetroTabPage();
@@ -55,14 +56,14 @@
 			this.Timeslot_6h = new MetroFramework.Controls.MetroRadioButton();
 			this.Timeslot_4h = new MetroFramework.Controls.MetroRadioButton();
 			this.Timeslot_3h = new MetroFramework.Controls.MetroRadioButton();
-			this.Visible24H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible21H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible18H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible15H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible12H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible9H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible6H = new MetroFramework.Controls.MetroCheckBox();
-			this.Visible3H = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_8 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_7 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_6 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_5 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_4 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_3 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_2 = new MetroFramework.Controls.MetroCheckBox();
+			this.Visible_1 = new MetroFramework.Controls.MetroCheckBox();
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
@@ -111,6 +112,7 @@
 			// 
 			// SeasonControlTabs
 			// 
+			this.SeasonControlTabs.Controls.Add(this.All);
 			this.SeasonControlTabs.Controls.Add(this.Spring);
 			this.SeasonControlTabs.Controls.Add(this.Summer);
 			this.SeasonControlTabs.Controls.Add(this.Autumn);
@@ -119,11 +121,27 @@
 			this.SeasonControlTabs.ItemSize = new System.Drawing.Size(54, 34);
 			this.SeasonControlTabs.Location = new System.Drawing.Point(0, 0);
 			this.SeasonControlTabs.Name = "SeasonControlTabs";
-			this.SeasonControlTabs.SelectedIndex = 3;
+			this.SeasonControlTabs.SelectedIndex = 0;
 			this.SeasonControlTabs.Size = new System.Drawing.Size(290, 50);
 			this.SeasonControlTabs.TabIndex = 11;
 			this.SeasonControlTabs.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.SeasonControlTabs.UseSelectable = true;
+			this.SeasonControlTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.SeasonTabs_Selected);
+			// 
+			// All
+			// 
+			this.All.HorizontalScrollbarBarColor = true;
+			this.All.HorizontalScrollbarHighlightOnWheel = false;
+			this.All.HorizontalScrollbarSize = 10;
+			this.All.Location = new System.Drawing.Point(4, 38);
+			this.All.Name = "All";
+			this.All.Size = new System.Drawing.Size(282, 8);
+			this.All.TabIndex = 4;
+			this.All.Text = "All";
+			this.All.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.All.VerticalScrollbarBarColor = true;
+			this.All.VerticalScrollbarHighlightOnWheel = false;
+			this.All.VerticalScrollbarSize = 10;
 			// 
 			// Spring
 			// 
@@ -204,12 +222,12 @@
 			// DayTabs
 			// 
 			this.DayTabs.Controls.Add(this.Sun);
-			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Controls.Add(this.Mon);
 			this.DayTabs.Controls.Add(this.Tue);
 			this.DayTabs.Controls.Add(this.Wed);
 			this.DayTabs.Controls.Add(this.Thu);
 			this.DayTabs.Controls.Add(this.Fri);
+			this.DayTabs.Controls.Add(this.Sat);
 			this.DayTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DayTabs.Location = new System.Drawing.Point(0, 0);
 			this.DayTabs.Name = "DayTabs";
@@ -420,14 +438,6 @@
 			this.CheckBoxContainer.Controls.Add(this.Timeslot_6h);
 			this.CheckBoxContainer.Controls.Add(this.Timeslot_4h);
 			this.CheckBoxContainer.Controls.Add(this.Timeslot_3h);
-			this.CheckBoxContainer.Controls.Add(this.Visible24H);
-			this.CheckBoxContainer.Controls.Add(this.Visible21H);
-			this.CheckBoxContainer.Controls.Add(this.Visible18H);
-			this.CheckBoxContainer.Controls.Add(this.Visible15H);
-			this.CheckBoxContainer.Controls.Add(this.Visible12H);
-			this.CheckBoxContainer.Controls.Add(this.Visible9H);
-			this.CheckBoxContainer.Controls.Add(this.Visible6H);
-			this.CheckBoxContainer.Controls.Add(this.Visible3H);
 			this.CheckBoxContainer.Dock = System.Windows.Forms.DockStyle.Top;
 			this.CheckBoxContainer.HorizontalScrollbarBarColor = true;
 			this.CheckBoxContainer.HorizontalScrollbarHighlightOnWheel = false;
@@ -521,125 +531,125 @@
 			this.Timeslot_3h.UseSelectable = true;
 			this.Timeslot_3h.CheckedChanged += new System.EventHandler(this.Timeslot_Changed);
 			// 
-			// Visible24H
+			// Visible_8
 			// 
-			this.Visible24H.AutoSize = true;
-			this.Visible24H.Checked = true;
-			this.Visible24H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible24H.Location = new System.Drawing.Point(434, 0);
-			this.Visible24H.Name = "Visible24H";
-			this.Visible24H.Size = new System.Drawing.Size(62, 15);
-			this.Visible24H.TabIndex = 9;
-			this.Visible24H.Tag = "7";
-			this.Visible24H.Text = "21~24h";
-			this.Visible24H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible24H.UseSelectable = true;
-			this.Visible24H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_8.AutoSize = true;
+			this.Visible_8.Checked = true;
+			this.Visible_8.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_8.Location = new System.Drawing.Point(434, 0);
+			this.Visible_8.Name = "Visible_8";
+			this.Visible_8.Size = new System.Drawing.Size(62, 15);
+			this.Visible_8.TabIndex = 9;
+			this.Visible_8.Tag = "7";
+			this.Visible_8.Text = "21~24h";
+			this.Visible_8.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_8.UseSelectable = true;
+			this.Visible_8.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible21H
+			// Visible_7
 			// 
-			this.Visible21H.AutoSize = true;
-			this.Visible21H.Checked = true;
-			this.Visible21H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible21H.Location = new System.Drawing.Point(366, 0);
-			this.Visible21H.Name = "Visible21H";
-			this.Visible21H.Size = new System.Drawing.Size(62, 15);
-			this.Visible21H.TabIndex = 8;
-			this.Visible21H.Tag = "6";
-			this.Visible21H.Text = "18~21h";
-			this.Visible21H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible21H.UseSelectable = true;
-			this.Visible21H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_7.AutoSize = true;
+			this.Visible_7.Checked = true;
+			this.Visible_7.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_7.Location = new System.Drawing.Point(366, 0);
+			this.Visible_7.Name = "Visible_7";
+			this.Visible_7.Size = new System.Drawing.Size(62, 15);
+			this.Visible_7.TabIndex = 8;
+			this.Visible_7.Tag = "6";
+			this.Visible_7.Text = "18~21h";
+			this.Visible_7.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_7.UseSelectable = true;
+			this.Visible_7.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible18H
+			// Visible_6
 			// 
-			this.Visible18H.AutoSize = true;
-			this.Visible18H.Checked = true;
-			this.Visible18H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible18H.Location = new System.Drawing.Point(298, 0);
-			this.Visible18H.Name = "Visible18H";
-			this.Visible18H.Size = new System.Drawing.Size(62, 15);
-			this.Visible18H.TabIndex = 7;
-			this.Visible18H.Tag = "5";
-			this.Visible18H.Text = "15~18h";
-			this.Visible18H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible18H.UseSelectable = true;
-			this.Visible18H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_6.AutoSize = true;
+			this.Visible_6.Checked = true;
+			this.Visible_6.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_6.Location = new System.Drawing.Point(298, 0);
+			this.Visible_6.Name = "Visible_6";
+			this.Visible_6.Size = new System.Drawing.Size(62, 15);
+			this.Visible_6.TabIndex = 7;
+			this.Visible_6.Tag = "5";
+			this.Visible_6.Text = "15~18h";
+			this.Visible_6.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_6.UseSelectable = true;
+			this.Visible_6.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible15H
+			// Visible_5
 			// 
-			this.Visible15H.AutoSize = true;
-			this.Visible15H.Checked = true;
-			this.Visible15H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible15H.Location = new System.Drawing.Point(230, 0);
-			this.Visible15H.Name = "Visible15H";
-			this.Visible15H.Size = new System.Drawing.Size(62, 15);
-			this.Visible15H.TabIndex = 6;
-			this.Visible15H.Tag = "4";
-			this.Visible15H.Text = "12~15h";
-			this.Visible15H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible15H.UseSelectable = true;
-			this.Visible15H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_5.AutoSize = true;
+			this.Visible_5.Checked = true;
+			this.Visible_5.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_5.Location = new System.Drawing.Point(230, 0);
+			this.Visible_5.Name = "Visible_5";
+			this.Visible_5.Size = new System.Drawing.Size(62, 15);
+			this.Visible_5.TabIndex = 6;
+			this.Visible_5.Tag = "4";
+			this.Visible_5.Text = "12~15h";
+			this.Visible_5.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_5.UseSelectable = true;
+			this.Visible_5.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible12H
+			// Visible_4
 			// 
-			this.Visible12H.AutoSize = true;
-			this.Visible12H.Checked = true;
-			this.Visible12H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible12H.Location = new System.Drawing.Point(168, 0);
-			this.Visible12H.Name = "Visible12H";
-			this.Visible12H.Size = new System.Drawing.Size(56, 15);
-			this.Visible12H.TabIndex = 5;
-			this.Visible12H.Tag = "3";
-			this.Visible12H.Text = "9~12h";
-			this.Visible12H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible12H.UseSelectable = true;
-			this.Visible12H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_4.AutoSize = true;
+			this.Visible_4.Checked = true;
+			this.Visible_4.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_4.Location = new System.Drawing.Point(168, 0);
+			this.Visible_4.Name = "Visible_4";
+			this.Visible_4.Size = new System.Drawing.Size(56, 15);
+			this.Visible_4.TabIndex = 5;
+			this.Visible_4.Tag = "3";
+			this.Visible_4.Text = "9~12h";
+			this.Visible_4.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_4.UseSelectable = true;
+			this.Visible_4.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible9H
+			// Visible_3
 			// 
-			this.Visible9H.AutoSize = true;
-			this.Visible9H.Checked = true;
-			this.Visible9H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible9H.Location = new System.Drawing.Point(112, 0);
-			this.Visible9H.Name = "Visible9H";
-			this.Visible9H.Size = new System.Drawing.Size(50, 15);
-			this.Visible9H.TabIndex = 4;
-			this.Visible9H.Tag = "2";
-			this.Visible9H.Text = "6~9h";
-			this.Visible9H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible9H.UseSelectable = true;
-			this.Visible9H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_3.AutoSize = true;
+			this.Visible_3.Checked = true;
+			this.Visible_3.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_3.Location = new System.Drawing.Point(112, 0);
+			this.Visible_3.Name = "Visible_3";
+			this.Visible_3.Size = new System.Drawing.Size(50, 15);
+			this.Visible_3.TabIndex = 4;
+			this.Visible_3.Tag = "2";
+			this.Visible_3.Text = "6~9h";
+			this.Visible_3.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_3.UseSelectable = true;
+			this.Visible_3.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible6H
+			// Visible_2
 			// 
-			this.Visible6H.AutoSize = true;
-			this.Visible6H.Checked = true;
-			this.Visible6H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible6H.Location = new System.Drawing.Point(56, 0);
-			this.Visible6H.Name = "Visible6H";
-			this.Visible6H.Size = new System.Drawing.Size(50, 15);
-			this.Visible6H.TabIndex = 3;
-			this.Visible6H.Tag = "1";
-			this.Visible6H.Text = "3~6h";
-			this.Visible6H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible6H.UseSelectable = true;
-			this.Visible6H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_2.AutoSize = true;
+			this.Visible_2.Checked = true;
+			this.Visible_2.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_2.Location = new System.Drawing.Point(56, 0);
+			this.Visible_2.Name = "Visible_2";
+			this.Visible_2.Size = new System.Drawing.Size(50, 15);
+			this.Visible_2.TabIndex = 3;
+			this.Visible_2.Tag = "1";
+			this.Visible_2.Text = "3~6h";
+			this.Visible_2.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_2.UseSelectable = true;
+			this.Visible_2.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
-			// Visible3H
+			// Visible_1
 			// 
-			this.Visible3H.AutoSize = true;
-			this.Visible3H.Checked = true;
-			this.Visible3H.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Visible3H.Location = new System.Drawing.Point(0, 0);
-			this.Visible3H.Name = "Visible3H";
-			this.Visible3H.Size = new System.Drawing.Size(50, 15);
-			this.Visible3H.TabIndex = 2;
-			this.Visible3H.Tag = "0";
-			this.Visible3H.Text = "0~3h";
-			this.Visible3H.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Visible3H.UseSelectable = true;
-			this.Visible3H.Click += new System.EventHandler(this.Visible_Toggled);
+			this.Visible_1.AutoSize = true;
+			this.Visible_1.Checked = true;
+			this.Visible_1.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Visible_1.Location = new System.Drawing.Point(0, 0);
+			this.Visible_1.Name = "Visible_1";
+			this.Visible_1.Size = new System.Drawing.Size(50, 15);
+			this.Visible_1.TabIndex = 2;
+			this.Visible_1.Tag = "0";
+			this.Visible_1.Text = "0~3h";
+			this.Visible_1.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Visible_1.UseSelectable = true;
+			this.Visible_1.Click += new System.EventHandler(this.Visible_Toggled);
 			// 
 			// Chart
 			// 
@@ -716,14 +726,14 @@
 		private LiveCharts.WinForms.CartesianChart Chart;
 		private MetroFramework.Controls.MetroPanel ChartContainer;
 		private MetroFramework.Controls.MetroPanel CheckBoxContainer;
-		private MetroFramework.Controls.MetroCheckBox Visible24H;
-		private MetroFramework.Controls.MetroCheckBox Visible21H;
-		private MetroFramework.Controls.MetroCheckBox Visible18H;
-		private MetroFramework.Controls.MetroCheckBox Visible15H;
-		private MetroFramework.Controls.MetroCheckBox Visible12H;
-		private MetroFramework.Controls.MetroCheckBox Visible9H;
-		private MetroFramework.Controls.MetroCheckBox Visible6H;
-		private MetroFramework.Controls.MetroCheckBox Visible3H;
+		private MetroFramework.Controls.MetroCheckBox Visible_8;
+		private MetroFramework.Controls.MetroCheckBox Visible_7;
+		private MetroFramework.Controls.MetroCheckBox Visible_6;
+		private MetroFramework.Controls.MetroCheckBox Visible_5;
+		private MetroFramework.Controls.MetroCheckBox Visible_4;
+		private MetroFramework.Controls.MetroCheckBox Visible_3;
+		private MetroFramework.Controls.MetroCheckBox Visible_2;
+		private MetroFramework.Controls.MetroCheckBox Visible_1;
 		private MetroFramework.Controls.MetroPanel metroPanel1;
 		private MetroFramework.Controls.MetroPanel SeasonPanel;
 		private MetroFramework.Controls.MetroTabControl DayTabs;
@@ -745,6 +755,7 @@
 		private MetroFramework.Controls.MetroRadioButton Timeslot_8h;
 		private MetroFramework.Controls.MetroRadioButton Timeslot_6h;
 		private MetroFramework.Controls.MetroRadioButton Timeslot_4h;
+		private MetroFramework.Controls.MetroTabPage All;
 	}
 }
 
