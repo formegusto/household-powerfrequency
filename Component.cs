@@ -134,6 +134,10 @@ namespace hhpf
 				   }
 			   });
 		   }));
+		private void UIDBtn_Click(object sender, EventArgs e)
+		{
+			(new UIDComponent()).Show(this);
+		}
 		private void LoadBtn_Click(object sender, EventArgs e) {
 			Clear_Visible();
 			this.controller.Dispatch(MODEL_ACTIONS.LOAD_EXCEL);

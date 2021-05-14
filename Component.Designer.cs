@@ -67,6 +67,7 @@
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
+			this.UID_Btn = new MetroFramework.Controls.MetroButton();
 			this.Header.SuspendLayout();
 			this.SeasonPanel.SuspendLayout();
 			this.SeasonControlTabs.SuspendLayout();
@@ -347,6 +348,7 @@
 			// 
 			// Footer
 			// 
+			this.Footer.Controls.Add(this.UID_Btn);
 			this.Footer.Controls.Add(this.LoadBtn);
 			this.Footer.Controls.Add(this.UIDSearch);
 			this.Footer.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -689,6 +691,18 @@
 			this.ChartContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.VerticalScrollbarSize = 10;
 			// 
+			// UID_Btn
+			// 
+			this.UID_Btn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.UID_Btn.Location = new System.Drawing.Point(740, 10);
+			this.UID_Btn.Name = "UID_Btn";
+			this.UID_Btn.Size = new System.Drawing.Size(160, 30);
+			this.UID_Btn.TabIndex = 4;
+			this.UID_Btn.Text = "UID List";
+			this.UID_Btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.UID_Btn.UseSelectable = true;
+			this.UID_Btn.Click += new System.EventHandler(this.UIDBtn_Click);
+			// 
 			// Component
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -756,6 +770,7 @@
 		private MetroFramework.Controls.MetroRadioButton Timeslot_6h;
 		private MetroFramework.Controls.MetroRadioButton Timeslot_4h;
 		private MetroFramework.Controls.MetroTabPage All;
+		private MetroFramework.Controls.MetroButton UID_Btn;
 	}
 }
 
