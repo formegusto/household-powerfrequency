@@ -37,6 +37,7 @@
 			// UIDContainer
 			// 
 			this.UIDContainer.Controls.Add(this.loading);
+			// this.UIDContainer.Controls.Add(this.UIDListView);
 			this.UIDContainer.HorizontalScrollbarBarColor = true;
 			this.UIDContainer.HorizontalScrollbarHighlightOnWheel = false;
 			this.UIDContainer.HorizontalScrollbarSize = 10;
@@ -63,6 +64,7 @@
 			this.UIDListView.UseCompatibleStateImageBehavior = false;
 			this.UIDListView.UseSelectable = true;
 			this.UIDListView.View = System.Windows.Forms.View.List;
+			this.UIDListView.SelectedIndexChanged += new System.EventHandler(this.UIDListView_SelectedIndexChanged);
 			// 
 			// loading
 			// 

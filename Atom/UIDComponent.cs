@@ -68,5 +68,11 @@ namespace hhpf.Atom
 
 			return DateTime.Now;
 		}
+
+		private void UIDListView_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(this.UIDListView.SelectedItems.Count != 0)
+				Console.WriteLine(this.UIDListView.SelectedItems[0]);
+		}
 	}
 }
