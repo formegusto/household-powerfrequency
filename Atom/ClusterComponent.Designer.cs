@@ -28,23 +28,23 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+			this.ClusterChart = new LiveCharts.WinForms.CartesianChart();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
 			this.ChartContainer.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// cartesianChart1
+			// ClusterChart
 			// 
-			this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
-			this.cartesianChart1.Name = "cartesianChart1";
-			this.cartesianChart1.Size = new System.Drawing.Size(454, 400);
-			this.cartesianChart1.TabIndex = 2;
-			this.cartesianChart1.Text = "cartesianChart1";
+			this.ClusterChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ClusterChart.Location = new System.Drawing.Point(0, 0);
+			this.ClusterChart.Name = "ClusterChart";
+			this.ClusterChart.Size = new System.Drawing.Size(454, 400);
+			this.ClusterChart.TabIndex = 2;
+			this.ClusterChart.Text = "cartesianChart1";
 			// 
 			// ChartContainer
 			// 
-			this.ChartContainer.Controls.Add(this.cartesianChart1);
+			this.ChartContainer.Controls.Add(this.ClusterChart);
 			this.ChartContainer.HorizontalScrollbarBarColor = true;
 			this.ChartContainer.HorizontalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.HorizontalScrollbarSize = 10;
@@ -74,7 +74,7 @@
 
 		#endregion
 
-		private LiveCharts.WinForms.CartesianChart cartesianChart1;
+		private LiveCharts.WinForms.CartesianChart ClusterChart;
 		private MetroFramework.Controls.MetroPanel ChartContainer;
 	}
 }

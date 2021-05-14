@@ -145,11 +145,11 @@ namespace MetroUI
 			{
 				List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 				// cluster Power Frequency
-				// List<PowerFrequency>[] cpfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
+				List<PowerFrequency>[] cpfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 
 				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++) { 
 					pfList[p] = new List<PowerFrequency>();
-					// cpfList[p] = new List<PowerFrequency>();
+					cpfList[p] = new List<PowerFrequency>();
 				}
 
 				for (int d = 0; d < this.dayStore[dayIdx].Count; d++)
@@ -169,10 +169,10 @@ namespace MetroUI
 						}
 					}
 
-					/*
+					
 					for (int t = 0; t < this.dayStore[dayIdx][d].cluster.timeSlot.Length; t++)
 					{
-						PowerFrequency findPf = pfList[t].Find(
+						PowerFrequency findPf = cpfList[t].Find(
 							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50);
 
 						if (findPf == null)
@@ -184,15 +184,13 @@ namespace MetroUI
 							findPf.IncFrequency();
 						}
 					}
-					*/
+					
 				}
 
-				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
+				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++) { 
 					pfList[p].Sort();
-				/*
-				for (int p = 0; p < this.dayStore[dayIdx][0].cluster.timeSlot.Length; p++)
 					cpfList[p].Sort();
-					*/
+				}
 
 				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
 				{
@@ -202,26 +200,12 @@ namespace MetroUI
 					});
 				}
 
-				/*
-				for (int p = 0; p < this.dayStore[dayIdx][0].cluster.timeSlot.Length; p++)
-				{
-					cpfList[p].ForEach((pf) =>
-					{
-						Console.WriteLine("Cluster");
-						Console.WriteLine(pf.ToString());
-					});
-				}
-				*/
-
 				this.powerFrequencies = pfList;
-				// this.clusterPowerFrequencies = cpfList;
-				if (isNotify)
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.timeslot));
-
-				/*
+				this.clusterPowerFrequencies = cpfList;
+				
 				if (isNotify)
 					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot));
-					*/
+					
 			}
 		}
 	}

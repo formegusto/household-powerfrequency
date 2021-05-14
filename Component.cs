@@ -83,7 +83,7 @@ namespace MetroUI
 
 					this.ChartContainer.Controls.Add(this.Chart);
 					
-					this.clusterComponent = new ClusterComponent();
+					this.clusterComponent = new ClusterComponent(e.clusterPowerFrequencies, e.timeslot);
 					this.clusterComponent.Show();
 
 					break;
