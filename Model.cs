@@ -75,7 +75,6 @@ namespace MetroUI
 			this.timeslot = TimeSlot.timeslot_3h;
 			this.season = Season.ALL;
 		}
-
 		public void Attach(IModelObserver imo)
 		{
 			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);

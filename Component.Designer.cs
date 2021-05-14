@@ -39,12 +39,12 @@
 			this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
 			this.DayTabs = new MetroFramework.Controls.MetroTabControl();
 			this.Sun = new MetroFramework.Controls.MetroTabPage();
-			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Mon = new MetroFramework.Controls.MetroTabPage();
 			this.Tue = new MetroFramework.Controls.MetroTabPage();
 			this.Wed = new MetroFramework.Controls.MetroTabPage();
 			this.Thu = new MetroFramework.Controls.MetroTabPage();
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
+			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Footer = new MetroFramework.Controls.MetroPanel();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
@@ -254,21 +254,6 @@
 			this.Sun.VerticalScrollbarHighlightOnWheel = false;
 			this.Sun.VerticalScrollbarSize = 10;
 			// 
-			// Sat
-			// 
-			this.Sat.HorizontalScrollbarBarColor = true;
-			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
-			this.Sat.HorizontalScrollbarSize = 10;
-			this.Sat.Location = new System.Drawing.Point(4, 38);
-			this.Sat.Name = "Sat";
-			this.Sat.Size = new System.Drawing.Size(760, 8);
-			this.Sat.TabIndex = 5;
-			this.Sat.Text = "Sat";
-			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.Sat.VerticalScrollbarBarColor = true;
-			this.Sat.VerticalScrollbarHighlightOnWheel = false;
-			this.Sat.VerticalScrollbarSize = 10;
-			// 
 			// Mon
 			// 
 			this.Mon.HorizontalScrollbarBarColor = true;
@@ -344,6 +329,21 @@
 			this.Fri.VerticalScrollbarBarColor = true;
 			this.Fri.VerticalScrollbarHighlightOnWheel = false;
 			this.Fri.VerticalScrollbarSize = 10;
+			// 
+			// Sat
+			// 
+			this.Sat.HorizontalScrollbarBarColor = true;
+			this.Sat.HorizontalScrollbarHighlightOnWheel = false;
+			this.Sat.HorizontalScrollbarSize = 10;
+			this.Sat.Location = new System.Drawing.Point(4, 38);
+			this.Sat.Name = "Sat";
+			this.Sat.Size = new System.Drawing.Size(760, 8);
+			this.Sat.TabIndex = 5;
+			this.Sat.Text = "Sat";
+			this.Sat.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.Sat.VerticalScrollbarBarColor = true;
+			this.Sat.VerticalScrollbarHighlightOnWheel = false;
+			this.Sat.VerticalScrollbarSize = 10;
 			// 
 			// Footer
 			// 
@@ -680,9 +680,9 @@
 			this.ChartContainer.HorizontalScrollbarBarColor = true;
 			this.ChartContainer.HorizontalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.HorizontalScrollbarSize = 10;
-			this.ChartContainer.Location = new System.Drawing.Point(20, 149);
+			this.ChartContainer.Location = new System.Drawing.Point(20, 144);
 			this.ChartContainer.Name = "ChartContainer";
-			this.ChartContainer.Size = new System.Drawing.Size(1060, 581);
+			this.ChartContainer.Size = new System.Drawing.Size(1060, 586);
 			this.ChartContainer.TabIndex = 2;
 			this.ChartContainer.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.ChartContainer.VerticalScrollbarBarColor = true;
@@ -700,7 +700,7 @@
 			this.Controls.Add(this.Header);
 			this.Name = "Component";
 			this.Resizable = false;
-			this.Text = "KETI";
+			this.Text = "Household Power Frequency";
 			this.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Header.ResumeLayout(false);
 			this.SeasonPanel.ResumeLayout(false);

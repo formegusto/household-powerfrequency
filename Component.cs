@@ -18,6 +18,7 @@ using System.Windows.Threading;
 
 using MetroUI.Entity;
 using MetroUI.Utils;
+using MetroUI.Atom;
 
 namespace MetroUI
 {
@@ -25,6 +26,7 @@ namespace MetroUI
 	{
 		public event ViewHandler<IView> changed;
 		public List<MetroFramework.Controls.MetroCheckBox> VisibleGroup;
+		ClusterComponent clusterComponent;
 		IController controller;
 		public Component()
 		{
@@ -42,6 +44,10 @@ namespace MetroUI
 			this.VisibleGroup.Add(Visible_6);
 			this.VisibleGroup.Add(Visible_7);
 			this.VisibleGroup.Add(Visible_8);
+			//
+			// ClusterComponent Init
+			//
+			this.clusterComponent = null;
 		}
 		public void SetController(IController controller)
 		{
@@ -76,9 +82,17 @@ namespace MetroUI
 					});
 
 					this.ChartContainer.Controls.Add(this.Chart);
+					
+					this.clusterComponent = new ClusterComponent();
+					this.clusterComponent.Show();
 
 					break;
 				case MODEL_ACTIONS.REQUIRE_RELOAD:
+					if (this.clusterComponent != null)
+					{
+						this.clusterComponent.Close();
+						this.clusterComponent.Dispose();
+					}
 					LoadBtn_Click(null, null);
 
 					break;
