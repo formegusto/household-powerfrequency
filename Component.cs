@@ -27,7 +27,8 @@ namespace hhpf
 		public event ViewHandler<IView> changed;
 		public List<MetroFramework.Controls.MetroCheckBox> VisibleGroup;
 		ClusterComponent clusterComponent;
-		IController controller;
+		UIDComponent uidComponent;
+		public IController controller;
 		public Component()
 		{
 			InitializeComponent();
@@ -124,6 +125,11 @@ namespace hhpf
 				}
 			}));
 		}
+		public void Change_UIDText(string text)
+		{
+			this.UIDSearch.Text = text;
+			LoadBtn_Click(null, null);
+		}
 		private void Clear_Visible() => this.Invoke((System.Action)(() =>
 		   {
 			   this.VisibleGroup.ForEach((v) =>
@@ -136,7 +142,9 @@ namespace hhpf
 		   }));
 		private void UIDBtn_Click(object sender, EventArgs e)
 		{
-			(new UIDComponent()).Show(this);
+			uidComponent = new UIDComponent();
+			uidComponent.UIDFormEvent += Change_UIDText;
+			uidComponent.ShowDialog();
 		}
 		private void LoadBtn_Click(object sender, EventArgs e) {
 			Clear_Visible();

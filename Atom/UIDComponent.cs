@@ -13,6 +13,9 @@ namespace hhpf.Atom
 {
 	public partial class UIDComponent : MetroFramework.Forms.MetroForm
 	{
+		public delegate void UIDFormDataHandler(string text);
+
+		public event UIDFormDataHandler UIDFormEvent;
 		public UIDComponent()
 		{
 			InitializeComponent();
@@ -71,8 +74,10 @@ namespace hhpf.Atom
 
 		private void UIDListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if(this.UIDListView.SelectedItems.Count != 0)
-				Console.WriteLine(this.UIDListView.SelectedItems[0]);
+			if(this.UIDListView.SelectedItems.Count != 0) {
+				this.UIDFormEvent(this.UIDListView.SelectedItems[0].Text);
+				this.Close();
+			}
 		}
 	}
 }
