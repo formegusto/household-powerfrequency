@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace hhpf.Common
 {
+	public enum Day
+	{
+		SUN,
+		MON,
+		TUE,
+		WED,
+		THU,
+		FRI,
+		SAT
+	}
+
 	public enum TimeSlot
 	{
 		timeslot_3h = 3,
@@ -18,10 +29,10 @@ namespace hhpf.Common
 
 	public enum Season
 	{
-		ALL = 0,
-		SPRING = 1,
-		SUMMER = 2,
-		AUTUMN = 3,
-		WINTER = 4
+		ALL,
+		SPRING,
+		SUMMER,
+		AUTUMN,
+		WINTER
 	}
 }

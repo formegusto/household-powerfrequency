@@ -78,7 +78,7 @@ namespace hhpf
 					
 					Task.Run(() =>
 					{
-						ConfigChart(e.powerFrequencies, e.clusterPowerFrequencies, e.timeslot);
+						ConfigChart(e.powerFrequencies, e.timeslot);
 					});
 
 					this.ChartContainer.Controls.Add(this.Chart);
@@ -100,7 +100,7 @@ namespace hhpf
 					break;
 			}
 		}
-		public void ConfigChart(List<PowerFrequency>[] pf, List<PowerFrequency>[] cpf, TimeSlot ts)
+		public void ConfigChart(List<PowerFrequency>[] pf, TimeSlot ts)
 		{
 			this.Invoke((System.Action)( () => {
 				int startHours = 0;
@@ -122,25 +122,6 @@ namespace hhpf
 					this.VisibleGroup[p].Text = string.Format("{0}~{1}h", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts));
 					this.CheckBoxContainer.Controls.Add(this.VisibleGroup[p]);
 				}
-				/*
-				startHours = 0;
-				for (int p = 0; p < cpf.Length; p++)
-				{
-					ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
-					cpf[p].ForEach((pp) =>
-					{
-						cv.Add(new ObservablePoint(pp.wh, pp.frequency));
-					});
-
-					LineSeries ls = new LineSeries
-					{
-						Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours + TimeSlotUtils.TimeSlotToHours(ts)),
-						Values = cv
-					};
-
-					this.Chart.Series.Add(ls);
-				}
-				*/
 			}));
 		}
 		private void Clear_Visible() => this.Invoke((System.Action)(() =>
@@ -168,33 +149,9 @@ namespace hhpf
 				this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_TIMESLOT, timeslot));
 			}
 		}
-		private void SeasonTabs_Selected(object sender, TabControlEventArgs e)
-		{
-			Season selectedSeason =  Season.ALL;
-
-			switch (e.TabPageIndex)
-			{
-				case 0:
-					selectedSeason = Season.ALL;
-					break;
-				case 1:
-					selectedSeason = Season.SPRING;
-					break;
-				case 2:
-					selectedSeason = Season.SUMMER;
-					break;
-				case 3:
-					selectedSeason = Season.AUTUMN;
-					break;
-				case 4:
-					selectedSeason = Season.WINTER;
-					break;
-			}
-
-			this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON, selectedSeason));
-		}
+		private void SeasonTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON, (Season)e.TabPageIndex));
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
-		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, e.TabPageIndex));
+		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_DAY, (hhpf.Common.Day) e.TabPageIndex));
 		private void Visible_Toggled(object sender, EventArgs e)
 		{
 			string tag = ((MetroFramework.Controls.MetroCheckBox) sender).Tag.ToString();

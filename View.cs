@@ -14,6 +14,7 @@ namespace hhpf
 		public string keyword;
 		public TimeSlot timeslot;
 		public Season season;
+		public Day day;
 		public int dayIdx;
 		public ViewEventArgs(string a)
 		{
@@ -38,6 +39,11 @@ namespace hhpf
 		{
 			this.action = a;
 			this.season = s;
+		}
+		public ViewEventArgs(string a, Day d)
+		{
+			this.action = a;
+			this.day = d;
 		}
 	}
 	public interface IView

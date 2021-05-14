@@ -52,16 +52,18 @@ namespace hhpf
 	{
 		void Attach(IModelObserver observer);
 		void ChangeKeyword(string keyword);
+		void ChangeDay(Day day);
 		void ChangeTimeslot(TimeSlot timeslot);
 		void ChangeSeason(Season season);
 		void LoadExcel();
-		void RequestDayData(int dayIdx, bool isNotify = true);
+		void RequestDayData(bool isNotify = true);
 	}
 	public class DayClusterModel: IModel
 	{
 		public event ModelHandler<DayClusterModel> changed;
 		public string keyword;
 		public bool isLoaded;
+		public Day day;
 		public TimeSlot timeslot;
 		public Season season;
 		public List<DayData>[] dayStore;
@@ -74,12 +76,19 @@ namespace hhpf
 			this.isLoaded = false;
 			this.timeslot = TimeSlot.timeslot_3h;
 			this.season = Season.ALL;
+			this.day = Day.SUN;
 		}
 		public void Attach(IModelObserver imo)
 		{
 			this.changed += new ModelHandler<DayClusterModel>(imo.ModelNotify);
 		}
 		public void ChangeKeyword(string k) => this.keyword = k;
+		public void ChangeDay(Day d)
+		{
+			this.day = d;
+			if (this.isLoaded)
+				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.REQUIRE_RELOAD));
+		}
 		public void ChangeTimeslot(TimeSlot t)
 		{
 			this.timeslot = t;
@@ -93,7 +102,7 @@ namespace hhpf
 		}
 		public async void LoadExcel()
 		{
-			Console.WriteLine(string.Format("{0} {1} ---- ExcelLoadStart", this.keyword.Trim(), this.season));
+			Console.WriteLine(string.Format("{0} {1} {2} ---- ExcelLoadStart", this.keyword.Trim(), this.season, this.timeslot));
 			this.dayStore = new List<DayData>[7];
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
 
@@ -125,7 +134,7 @@ namespace hhpf
 								)
 							);
 
-							Console.WriteLine(String.Format("{0} 클러스터에 {1} 존재합니다!", clusterTmp.uid, this.keyword));
+							// Console.WriteLine(String.Format("{0} 클러스터에 {1} 존재합니다!", clusterTmp.uid, this.keyword));
 
 							return;
 						}
@@ -139,29 +148,30 @@ namespace hhpf
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
 			this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
 		}
-		public void RequestDayData(int dayIdx, bool isNotify = true)
+		public void RequestDayData(bool isNotify = true)
 		{
 			if (this.isLoaded)
 			{
+				Console.WriteLine(string.Format("{0} --- DayData", this.day));
 				List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 				// cluster Power Frequency
 				List<PowerFrequency>[] cpfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
 
-				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++) { 
+				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++) { 
 					pfList[p] = new List<PowerFrequency>();
 					cpfList[p] = new List<PowerFrequency>();
 				}
 
-				for (int d = 0; d < this.dayStore[dayIdx].Count; d++)
+				for (int d = 0; d < this.dayStore[(int)this.day].Count; d++)
 				{
-					for (int t = 0; t < this.dayStore[dayIdx][d].data.timeSlot.Length; t++)
+					for (int t = 0; t < this.dayStore[(int)this.day][d].data.timeSlot.Length; t++)
 					{
 						PowerFrequency findPf = pfList[t].Find(
-							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
 
 						if (findPf == null)
 						{
-							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[dayIdx][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
+							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
 						}
 						else
 						{
@@ -170,14 +180,14 @@ namespace hhpf
 					}
 
 					
-					for (int t = 0; t < this.dayStore[dayIdx][d].cluster.timeSlot.Length; t++)
+					for (int t = 0; t < this.dayStore[(int)this.day][d].cluster.timeSlot.Length; t++)
 					{
 						PowerFrequency findPf = cpfList[t].Find(
-							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[dayIdx][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50);
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50);
 
 						if (findPf == null)
 						{
-							cpfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[dayIdx][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50));
+							cpfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50));
 						}
 						else
 						{
@@ -187,24 +197,26 @@ namespace hhpf
 					
 				}
 
-				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++) { 
+				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++) { 
 					pfList[p].Sort();
 					cpfList[p].Sort();
 				}
 
-				for (int p = 0; p < this.dayStore[dayIdx][0].data.timeSlot.Length; p++)
+				/*
+				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++)
 				{
 					pfList[p].ForEach((pf) =>
 					{
 						Console.WriteLine(pf.ToString());
 					});
 				}
+				*/
 
 				this.powerFrequencies = pfList;
 				this.clusterPowerFrequencies = cpfList;
 				
 				if (isNotify)
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[dayIdx].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot));
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[(int)this.day].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot));
 					
 			}
 		}

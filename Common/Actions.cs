@@ -14,6 +14,7 @@ namespace hhpf.Common
 	public static class VIEW_ACTIONS
 	{
 		public const string CHANGE_KEYWORD = "change_keyword";
+		public const string CHANGE_DAY = "change_day";
 		public const string CHANGE_TIMESLOT = "change_timeslot";
 		public const string CHANGE_SEASON = "change_season";
 		public const string REQUEST_DAYDATA = "request_daydata/pending";
