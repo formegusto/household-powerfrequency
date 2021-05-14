@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetroUI.Utils
+namespace hhpf.Utils
 {
 	public class DateUtils
 	{

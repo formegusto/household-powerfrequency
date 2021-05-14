@@ -9,18 +9,18 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroUI.Common;
+using hhpf.Common;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
 using System.Windows.Threading;
 
-using MetroUI.Entity;
-using MetroUI.Utils;
-using MetroUI.Atom;
+using hhpf.Entity;
+using hhpf.Utils;
+using hhpf.Atom;
 
-namespace MetroUI
+namespace hhpf
 {
 	public partial class Component : MetroFramework.Forms.MetroForm, IView, IModelObserver
 	{

@@ -11,11 +11,11 @@ using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 
-using MetroUI.Entity;
-using MetroUI.Common;
-using MetroUI.Utils;
+using hhpf.Entity;
+using hhpf.Common;
+using hhpf.Utils;
 
-namespace MetroUI.Atom
+namespace hhpf.Atom
 {
 	public partial class ClusterComponent : MetroFramework.Forms.MetroForm
 	{

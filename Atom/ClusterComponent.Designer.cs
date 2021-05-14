@@ -1,4 +1,4 @@
-﻿namespace MetroUI.Atom
+﻿namespace hhpf.Atom
 {
 	partial class ClusterComponent
 	{

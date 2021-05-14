@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28902.138
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroUI", "MetroUI.csproj", "{6DA8B8BC-4F7F-48C6-8F63-1515F8EFA82B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hhpf", "hhpf.csproj", "{6DA8B8BC-4F7F-48C6-8F63-1515F8EFA82B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

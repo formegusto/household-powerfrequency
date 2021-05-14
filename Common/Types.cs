@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetroUI.Common
+namespace hhpf.Common
 {
 	public enum TimeSlot
 	{

@@ -1,4 +1,4 @@
-﻿namespace MetroUI
+﻿namespace hhpf
 {
 	partial class Component
 	{

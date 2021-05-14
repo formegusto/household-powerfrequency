@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6DA8B8BC-4F7F-48C6-8F63-1515F8EFA82B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MetroUI</RootNamespace>
-    <AssemblyName>MetroUI</AssemblyName>
+    <RootNamespace>hhpf</RootNamespace>
+    <AssemblyName>hhpf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -113,6 +113,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
