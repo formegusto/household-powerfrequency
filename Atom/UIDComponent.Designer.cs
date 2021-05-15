@@ -28,27 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.UIDContainer = new MetroFramework.Controls.MetroPanel();
 			this.UIDListView = new MetroFramework.Controls.MetroListView();
+			this.UIDContainer = new MetroFramework.Controls.MetroPanel();
 			this.loading = new MetroFramework.Controls.MetroProgressSpinner();
 			this.UIDContainer.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// UIDContainer
-			// 
-			this.UIDContainer.Controls.Add(this.loading);
-			// this.UIDContainer.Controls.Add(this.UIDListView);
-			this.UIDContainer.HorizontalScrollbarBarColor = true;
-			this.UIDContainer.HorizontalScrollbarHighlightOnWheel = false;
-			this.UIDContainer.HorizontalScrollbarSize = 10;
-			this.UIDContainer.Location = new System.Drawing.Point(23, 63);
-			this.UIDContainer.Name = "UIDContainer";
-			this.UIDContainer.Size = new System.Drawing.Size(254, 514);
-			this.UIDContainer.TabIndex = 0;
-			this.UIDContainer.UseCustomBackColor = true;
-			this.UIDContainer.VerticalScrollbarBarColor = true;
-			this.UIDContainer.VerticalScrollbarHighlightOnWheel = false;
-			this.UIDContainer.VerticalScrollbarSize = 10;
 			// 
 			// UIDListView
 			// 
@@ -66,9 +50,25 @@
 			this.UIDListView.View = System.Windows.Forms.View.List;
 			this.UIDListView.SelectedIndexChanged += new System.EventHandler(this.UIDListView_SelectedIndexChanged);
 			// 
+			// UIDContainer
+			// 
+			this.UIDContainer.Controls.Add(this.loading);
+			this.UIDContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.UIDContainer.HorizontalScrollbarBarColor = true;
+			this.UIDContainer.HorizontalScrollbarHighlightOnWheel = false;
+			this.UIDContainer.HorizontalScrollbarSize = 10;
+			this.UIDContainer.Location = new System.Drawing.Point(20, 63);
+			this.UIDContainer.Name = "UIDContainer";
+			this.UIDContainer.Size = new System.Drawing.Size(460, 517);
+			this.UIDContainer.TabIndex = 1;
+			this.UIDContainer.UseCustomBackColor = true;
+			this.UIDContainer.VerticalScrollbarBarColor = true;
+			this.UIDContainer.VerticalScrollbarHighlightOnWheel = false;
+			this.UIDContainer.VerticalScrollbarSize = 10;
+			// 
 			// loading
 			// 
-			this.loading.Location = new System.Drawing.Point(102, 232);
+			this.loading.Location = new System.Drawing.Point(205, 233);
 			this.loading.Maximum = 100;
 			this.loading.Name = "loading";
 			this.loading.Size = new System.Drawing.Size(50, 50);
@@ -80,7 +80,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(300, 600);
+			this.ClientSize = new System.Drawing.Size(500, 600);
 			this.Controls.Add(this.UIDContainer);
 			this.Name = "UIDComponent";
 			this.Resizable = false;
@@ -93,9 +93,8 @@
 		}
 
 		#endregion
-
-		private MetroFramework.Controls.MetroPanel UIDContainer;
 		private MetroFramework.Controls.MetroListView UIDListView;
+		private MetroFramework.Controls.MetroPanel UIDContainer;
 		private MetroFramework.Controls.MetroProgressSpinner loading;
 	}
 }

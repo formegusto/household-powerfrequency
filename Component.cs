@@ -26,9 +26,9 @@ namespace hhpf
 	{
 		public event ViewHandler<IView> changed;
 		public List<MetroFramework.Controls.MetroCheckBox> VisibleGroup;
+		public IController controller;
 		ClusterComponent clusterComponent;
 		UIDComponent uidComponent;
-		public IController controller;
 		public Component()
 		{
 			InitializeComponent();

@@ -19,11 +19,20 @@ namespace hhpf.Atom
 {
 	public partial class ClusterComponent : MetroFramework.Forms.MetroForm
 	{
+		private List<MetroFramework.Controls.MetroCheckBox> VisibleGrp;
 		public ClusterComponent(List<PowerFrequency>[] cpf, TimeSlot ts)
 		{
 			InitializeComponent();
-
-			Console.WriteLine("Cluster Component");
+			this.VisibleGrp = new List<MetroFramework.Controls.MetroCheckBox>() { 
+				this.Visible1,
+				this.Visible2,
+				this.Visible3,
+				this.Visible4,
+				this.Visible5,
+				this.Visible6,
+				this.Visible7,
+				this.Visible8
+			};
 			
 			int startHours = 0;
 			for (int p = 0; p < cpf.Length; p++)
@@ -36,11 +45,15 @@ namespace hhpf.Atom
 
 				LineSeries ls = new LineSeries
 				{
-					Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
+					Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours + TimeSlotUtils.TimeSlotToHours(ts)),
 					Values = cv
 				};
 
 				this.ClusterChart.Series.Add(ls);
+				this.VisibleGrp[p].Text =
+					string.Format("{0}~{1}h", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts));
+				this.VisibleGrp[p].Checked = true;
+				this.VisibleContainer.Controls.Add(this.VisibleGrp[p]);
 			}
 				
 		}
