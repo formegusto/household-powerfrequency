@@ -150,6 +150,7 @@ namespace hhpf
 		}
 		public void RequestDayData(bool isNotify = true)
 		{
+			int powerDistance = 50;
 			if (this.isLoaded)
 			{
 				Console.WriteLine(string.Format("{0} --- DayData", this.day));
@@ -167,11 +168,11 @@ namespace hhpf
 					for (int t = 0; t < this.dayStore[(int)this.day][d].data.timeSlot.Length; t++)
 					{
 						PowerFrequency findPf = pfList[t].Find(
-							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / 50) * 50);
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance);
 
 						if (findPf == null)
 						{
-							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / 50) * 50));
+							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance));
 						}
 						else
 						{
@@ -183,11 +184,11 @@ namespace hhpf
 					for (int t = 0; t < this.dayStore[(int)this.day][d].cluster.timeSlot.Length; t++)
 					{
 						PowerFrequency findPf = cpfList[t].Find(
-							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50);
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance);
 
 						if (findPf == null)
 						{
-							cpfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / 50) * 50));
+							cpfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].cluster.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance));
 						}
 						else
 						{
