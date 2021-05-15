@@ -107,6 +107,7 @@
 			this.Visible1.Name = "Visible1";
 			this.Visible1.Size = new System.Drawing.Size(62, 15);
 			this.Visible1.TabIndex = 3;
+			this.Visible1.Tag = "0";
 			this.Visible1.Text = "18~24h";
 			this.Visible1.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible1.UseSelectable = true;
@@ -118,6 +119,7 @@
 			this.Visible2.Name = "Visible2";
 			this.Visible2.Size = new System.Drawing.Size(62, 15);
 			this.Visible2.TabIndex = 4;
+			this.Visible2.Tag = "1";
 			this.Visible2.Text = "18~24h";
 			this.Visible2.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible2.UseSelectable = true;
@@ -129,6 +131,7 @@
 			this.Visible3.Name = "Visible3";
 			this.Visible3.Size = new System.Drawing.Size(62, 15);
 			this.Visible3.TabIndex = 5;
+			this.Visible3.Tag = "2";
 			this.Visible3.Text = "18~24h";
 			this.Visible3.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible3.UseSelectable = true;
@@ -140,6 +143,7 @@
 			this.Visible4.Name = "Visible4";
 			this.Visible4.Size = new System.Drawing.Size(62, 15);
 			this.Visible4.TabIndex = 6;
+			this.Visible4.Tag = "3";
 			this.Visible4.Text = "18~24h";
 			this.Visible4.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible4.UseSelectable = true;
@@ -151,6 +155,7 @@
 			this.Visible5.Name = "Visible5";
 			this.Visible5.Size = new System.Drawing.Size(62, 15);
 			this.Visible5.TabIndex = 7;
+			this.Visible5.Tag = "4";
 			this.Visible5.Text = "18~24h";
 			this.Visible5.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible5.UseSelectable = true;
@@ -162,6 +167,7 @@
 			this.Visible6.Name = "Visible6";
 			this.Visible6.Size = new System.Drawing.Size(62, 15);
 			this.Visible6.TabIndex = 8;
+			this.Visible6.Tag = "5";
 			this.Visible6.Text = "18~24h";
 			this.Visible6.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible6.UseSelectable = true;
@@ -173,6 +179,7 @@
 			this.Visible7.Name = "Visible7";
 			this.Visible7.Size = new System.Drawing.Size(62, 15);
 			this.Visible7.TabIndex = 9;
+			this.Visible7.Tag = "6";
 			this.Visible7.Text = "18~24h";
 			this.Visible7.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible7.UseSelectable = true;
@@ -184,6 +191,7 @@
 			this.Visible8.Name = "Visible8";
 			this.Visible8.Size = new System.Drawing.Size(62, 15);
 			this.Visible8.TabIndex = 10;
+			this.Visible8.Tag = "7";
 			this.Visible8.Text = "18~24h";
 			this.Visible8.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.Visible8.UseSelectable = true;

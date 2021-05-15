@@ -53,9 +53,19 @@ namespace hhpf.Atom
 				this.VisibleGrp[p].Text =
 					string.Format("{0}~{1}h", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts));
 				this.VisibleGrp[p].Checked = true;
+				this.VisibleGrp[p].Click += Visible_Toggled;
 				this.VisibleContainer.Controls.Add(this.VisibleGrp[p]);
 			}
 				
+		}
+		private void Visible_Toggled(object sender, EventArgs e)
+		{
+			string tag = ((MetroFramework.Controls.MetroCheckBox)sender).Tag.ToString();
+			bool isVisibility = ((LineSeries)this.ClusterChart.Series[int.Parse(tag)]).Visibility == System.Windows.Visibility.Visible;
+			((LineSeries)this.ClusterChart.Series[int.Parse(tag)]).Visibility = isVisibility ?
+				System.Windows.Visibility.Hidden
+				:
+				System.Windows.Visibility.Visible;
 		}
 	}
 }
