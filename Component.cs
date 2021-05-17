@@ -83,17 +83,18 @@ namespace hhpf
 					});
 
 					this.ChartContainer.Controls.Add(this.Chart);
-					
-					this.clusterComponent = new ClusterComponent(e.clusterPowerFrequencies, e.timeslot);
-					this.clusterComponent.Show();
 
-					break;
-				case MODEL_ACTIONS.REQUIRE_RELOAD:
 					if (this.clusterComponent != null)
 					{
 						this.clusterComponent.Close();
 						this.clusterComponent.Dispose();
 					}
+
+					this.clusterComponent = new ClusterComponent(e.clusterPowerFrequencies, e.timeslot);
+					this.clusterComponent.Show();
+
+					break;
+				case MODEL_ACTIONS.REQUIRE_RELOAD:
 					LoadBtn_Click(null, null);
 
 					break;
