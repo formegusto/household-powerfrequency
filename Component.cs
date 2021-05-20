@@ -79,7 +79,7 @@ namespace hhpf
 					
 					Task.Run(() =>
 					{
-						ConfigChart(e.powerFrequencies, e.timeslot);
+						ConfigChart(e.powerFrequencies, e.maxWh,e.timeslot);
 					});
 
 					this.ChartContainer.Controls.Add(this.Chart);
@@ -108,17 +108,20 @@ namespace hhpf
 					break;
 			}
 		}
-		public void ConfigChart(List<PowerFrequency>[] pf, TimeSlot ts)
+		public void ConfigChart(List<PowerFrequency>[] pf, double maxWh, TimeSlot ts)
 		{
 			this.Invoke((System.Action)( () => {
 				int startHours = 0;
 				for (int p = 0; p < pf.Length; p++)
 				{
 					ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
+					cv.Add(new ObservablePoint(0, 0));
 					pf[p].ForEach((pp) =>
 					{
 						cv.Add(new ObservablePoint(pp.wh, pp.frequency));
 					});
+					if(pf[p][pf[p].Count() - 1].wh < maxWh)
+						cv.Add(new ObservablePoint(maxWh, 0));
 
 					LineSeries ls = new LineSeries
 					{

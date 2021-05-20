@@ -18,6 +18,7 @@ namespace hhpf
 	{
 		public string action;
 		public string keyword;
+		public double maxWh;
 		public DayData[] dayData;
 		public List<PowerFrequency>[] powerFrequencies;
 		public List<PowerFrequency>[] clusterPowerFrequencies;
@@ -42,13 +43,14 @@ namespace hhpf
 			this.timeslot = ts;
 		}
 
-		public ModelEventArgs(string a, DayData[] dd, List<PowerFrequency>[] pf, List<PowerFrequency>[] cpf,TimeSlot ts)
+		public ModelEventArgs(string a, DayData[] dd, List<PowerFrequency>[] pf, List<PowerFrequency>[] cpf,TimeSlot ts, double mw)
 		{
 			this.action = a;
 			this.dayData = dd;
 			this.powerFrequencies = pf;
 			this.clusterPowerFrequencies = cpf;
 			this.timeslot = ts;
+			this.maxWh = mw;
 		}
 	}
 	public interface IModelObserver
@@ -75,6 +77,7 @@ namespace hhpf
 		public TimeSlot timeslot;
 		public Season season;
 		public int autoIdx;
+		public double maxWh;
 		public List<string> households;
 		public List<DayData>[] dayStore;
 		public List<PowerFrequency>[] powerFrequencies;
@@ -195,6 +198,7 @@ namespace hhpf
 		}
 		public void RequestDayData(bool isNotify = true)
 		{
+			this.maxWh = 0;
 			int powerDistance = 50;
 			if (this.isLoaded)
 			{
@@ -246,6 +250,9 @@ namespace hhpf
 				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++) { 
 					pfList[p].Sort();
 					cpfList[p].Sort();
+
+					if(pfList[p][pfList[p].Count() - 1].wh >= maxWh)
+						maxWh = pfList[p][pfList[p].Count() - 1].wh;
 				}
 
 				/*
@@ -262,7 +269,7 @@ namespace hhpf
 				this.clusterPowerFrequencies = cpfList;
 				
 				if (isNotify)
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[(int)this.day].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot));
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[(int)this.day].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot, this.maxWh));
 					
 			}
 		}
