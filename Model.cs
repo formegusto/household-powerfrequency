@@ -186,7 +186,7 @@ namespace hhpf
 
 		public void AutoLoadNext()
 		{
-			int powerDistance = 100;
+			int powerDistance = 50;
 			if (this.isLoaded)
 			{
 				List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
@@ -222,7 +222,10 @@ namespace hhpf
 				}
 
 				if (++this.autoCount >= 10)
+				{
+					this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
 					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_LAST, this.keyword, pfList, this.timeslot));
+				}
 				else
 					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS, this.keyword, pfList, this.timeslot));
 
@@ -276,7 +279,8 @@ namespace hhpf
 			});
 
 			this.isLoaded = true;
-			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
+			if(!isAutoLoad)
+				this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
 			if (!isAuto)
 				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
 			else
