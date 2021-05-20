@@ -29,13 +29,13 @@
 		private void InitializeComponent()
 		{
 			this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-			this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+			this.DataChart = new LiveCharts.WinForms.CartesianChart();
 			this.metroPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// metroPanel1
 			// 
-			this.metroPanel1.Controls.Add(this.cartesianChart1);
+			this.metroPanel1.Controls.Add(this.DataChart);
 			this.metroPanel1.HorizontalScrollbarBarColor = true;
 			this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
 			this.metroPanel1.HorizontalScrollbarSize = 10;
@@ -48,14 +48,14 @@
 			this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
 			this.metroPanel1.VerticalScrollbarSize = 10;
 			// 
-			// cartesianChart1
+			// DataChart
 			// 
-			this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
-			this.cartesianChart1.Name = "cartesianChart1";
-			this.cartesianChart1.Size = new System.Drawing.Size(554, 514);
-			this.cartesianChart1.TabIndex = 1;
-			this.cartesianChart1.Text = "cartesianChart1";
+			this.DataChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.DataChart.Location = new System.Drawing.Point(0, 0);
+			this.DataChart.Name = "DataChart";
+			this.DataChart.Size = new System.Drawing.Size(554, 514);
+			this.DataChart.TabIndex = 1;
+			this.DataChart.Text = "cartesianChart1";
 			// 
 			// DataComponent
 			// 
@@ -75,6 +75,6 @@
 		#endregion
 
 		private MetroFramework.Controls.MetroPanel metroPanel1;
-		private LiveCharts.WinForms.CartesianChart cartesianChart1;
+		private LiveCharts.WinForms.CartesianChart DataChart;
 	}
 }

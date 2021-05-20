@@ -7,9 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 
 using hhpf.Entity;
 using hhpf.Common;
+using hhpf.Utils;
 
 namespace hhpf.Atom
 {
@@ -21,7 +25,23 @@ namespace hhpf.Atom
 
 			this.Text = uid;
 
+			int startHours = 0;
+			for (int p = 0; p < pf.Length; p++)
+			{
+				ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
+				pf[p].ForEach((pp) =>
+				{
+					cv.Add(new ObservablePoint(pp.wh, pp.frequency));
+				});
 
+				LineSeries ls = new LineSeries
+				{
+					Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
+					Values = cv
+				};
+
+				this.DataChart.Series.Add(ls);
+			}
 		}
 	}
 }

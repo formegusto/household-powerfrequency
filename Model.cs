@@ -222,9 +222,9 @@ namespace hhpf
 				}
 
 				if (++this.autoCount >= 10)
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_LAST, this.keyword, this.powerFrequencies, this.timeslot));
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_LAST, this.keyword, pfList, this.timeslot));
 				else
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS, this.keyword, this.powerFrequencies, this.timeslot));
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS, this.keyword, pfList, this.timeslot));
 
 			}
 		}
