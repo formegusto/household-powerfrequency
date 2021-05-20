@@ -55,7 +55,8 @@ namespace hhpf
 		void ChangeDay(Day day);
 		void ChangeTimeslot(TimeSlot timeslot);
 		void ChangeSeason(Season season);
-		void LoadExcel();
+		void AutoDraw();
+		void LoadExcel(bool isAuto=false);
 		void RequestDayData(bool isNotify = true);
 	}
 	public class DayClusterModel: IModel
@@ -66,6 +67,7 @@ namespace hhpf
 		public Day day;
 		public TimeSlot timeslot;
 		public Season season;
+		public List<string> households;
 		public List<DayData>[] dayStore;
 		public List<PowerFrequency>[] powerFrequencies;
 		public List<PowerFrequency>[] clusterPowerFrequencies;
@@ -100,11 +102,32 @@ namespace hhpf
 			if (this.isLoaded)
 				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.REQUIRE_RELOAD));
 		}
-		public async void LoadExcel()
+		public void AutoDraw()
+		{
+			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
+
+			this.households = new List<string>();
+
+			string path = System.Windows.Forms.Application.StartupPath + @"\household_uid\household_uid.csv";
+			StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
+
+			while (!sr.EndOfStream)
+			{
+				string line = sr.ReadLine();
+				this.households.Add(line);
+			}
+			sr.Close();
+
+			this.keyword = this.households[0];
+			LoadExcel(true);
+		}
+		public async void LoadExcel(bool isAuto=false)
 		{
 			Console.WriteLine(string.Format("{0} {1} {2} ---- ExcelLoadStart", this.keyword.Trim(), this.season, this.timeslot));
 			this.dayStore = new List<DayData>[7];
-			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
+
+			if (!isAuto)
+				this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
 
 			this.isLoaded = false;
 			for (int i = 0; i < 7; i++)
@@ -146,7 +169,10 @@ namespace hhpf
 
 			this.isLoaded = true;
 			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.STOP_LOADING));
-			this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
+			if (!isAuto)
+				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
+			else
+				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_DRAW_SUCCESS));
 		}
 		public void RequestDayData(bool isNotify = true)
 		{

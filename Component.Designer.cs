@@ -46,6 +46,7 @@
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
 			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Footer = new MetroFramework.Controls.MetroPanel();
+			this.UID_Btn = new MetroFramework.Controls.MetroButton();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
 			this.Body = new MetroFramework.Controls.MetroPanel();
@@ -67,7 +68,7 @@
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
-			this.UID_Btn = new MetroFramework.Controls.MetroButton();
+			this.AutoDrawBtn = new MetroFramework.Controls.MetroButton();
 			this.Header.SuspendLayout();
 			this.SeasonPanel.SuspendLayout();
 			this.SeasonControlTabs.SuspendLayout();
@@ -348,6 +349,7 @@
 			// 
 			// Footer
 			// 
+			this.Footer.Controls.Add(this.AutoDrawBtn);
 			this.Footer.Controls.Add(this.UID_Btn);
 			this.Footer.Controls.Add(this.LoadBtn);
 			this.Footer.Controls.Add(this.UIDSearch);
@@ -364,6 +366,18 @@
 			this.Footer.VerticalScrollbarBarColor = true;
 			this.Footer.VerticalScrollbarHighlightOnWheel = false;
 			this.Footer.VerticalScrollbarSize = 10;
+			// 
+			// UID_Btn
+			// 
+			this.UID_Btn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.UID_Btn.Location = new System.Drawing.Point(740, 10);
+			this.UID_Btn.Name = "UID_Btn";
+			this.UID_Btn.Size = new System.Drawing.Size(160, 30);
+			this.UID_Btn.TabIndex = 4;
+			this.UID_Btn.Text = "UID List";
+			this.UID_Btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.UID_Btn.UseSelectable = true;
+			this.UID_Btn.Click += new System.EventHandler(this.UIDBtn_Click);
 			// 
 			// LoadBtn
 			// 
@@ -691,17 +705,17 @@
 			this.ChartContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.VerticalScrollbarSize = 10;
 			// 
-			// UID_Btn
+			// AutoDrawBtn
 			// 
-			this.UID_Btn.Dock = System.Windows.Forms.DockStyle.Right;
-			this.UID_Btn.Location = new System.Drawing.Point(740, 10);
-			this.UID_Btn.Name = "UID_Btn";
-			this.UID_Btn.Size = new System.Drawing.Size(160, 30);
-			this.UID_Btn.TabIndex = 4;
-			this.UID_Btn.Text = "UID List";
-			this.UID_Btn.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.UID_Btn.UseSelectable = true;
-			this.UID_Btn.Click += new System.EventHandler(this.UIDBtn_Click);
+			this.AutoDrawBtn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.AutoDrawBtn.Location = new System.Drawing.Point(580, 10);
+			this.AutoDrawBtn.Name = "AutoDrawBtn";
+			this.AutoDrawBtn.Size = new System.Drawing.Size(160, 30);
+			this.AutoDrawBtn.TabIndex = 5;
+			this.AutoDrawBtn.Text = "Auto Draw";
+			this.AutoDrawBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.AutoDrawBtn.UseSelectable = true;
+			this.AutoDrawBtn.Click += new System.EventHandler(this.AutoDrawBtn_Click);
 			// 
 			// Component
 			// 
@@ -771,6 +785,7 @@
 		private MetroFramework.Controls.MetroRadioButton Timeslot_4h;
 		private MetroFramework.Controls.MetroTabPage All;
 		private MetroFramework.Controls.MetroButton UID_Btn;
+		private MetroFramework.Controls.MetroButton AutoDrawBtn;
 	}
 }
 

@@ -41,6 +41,10 @@ namespace hhpf
 					this.model.RequestDayData();
 
 					break;
+				case VIEW_ACTIONS.AUTO_DRAW:
+					this.model.AutoDraw();
+
+					break;
 				default:
 					break;
 			}

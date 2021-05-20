@@ -98,6 +98,10 @@ namespace hhpf
 					LoadBtn_Click(null, null);
 
 					break;
+				case VIEW_ACTIONS.AUTO_DRAW_SUCCESS:
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, this.DayTabs.SelectedIndex));
+
+					break;
 				default:
 					break;
 			}
@@ -165,6 +169,7 @@ namespace hhpf
 		private void SeasonTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON, (Season)e.TabPageIndex));
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_DAY, (hhpf.Common.Day) e.TabPageIndex));
+		private void AutoDrawBtn_Click(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_DRAW));
 		private void Visible_Toggled(object sender, EventArgs e)
 		{
 			string tag = ((MetroFramework.Controls.MetroCheckBox) sender).Tag.ToString();
