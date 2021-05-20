@@ -21,6 +21,7 @@ namespace hhpf.Common
 		public const string AUTO_DRAW = "auto_draw";
 		public const string AUTO_DRAW_SUCCESS = "auto_draw/success";
 		public const string AUTO_DRAW_FAILURE = "auto_draw/failure";
+		public const string AUTO_DRAW_LAST = "auto_draw/last";
 
 		public const string REQUEST_DAYDATA = "request_daydata/pending";
 		public const string REQUEST_DAYDATA_SUCCESS = "request_daydata/success";

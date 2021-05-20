@@ -99,6 +99,8 @@ namespace hhpf
 
 					break;
 				case VIEW_ACTIONS.AUTO_DRAW_SUCCESS:
+					this.UIDSearch.Text = e.keyword;
+					this.AutoDrawBtn.Text = "Next Auto Draw";
 					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, this.DayTabs.SelectedIndex));
 
 					break;
