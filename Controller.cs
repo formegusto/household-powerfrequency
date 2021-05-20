@@ -45,6 +45,14 @@ namespace hhpf
 					this.model.AutoDraw();
 
 					break;
+				case VIEW_ACTIONS.AUTO_LOAD:
+					this.model.AutoLoad();
+
+					break;
+				case VIEW_ACTIONS.AUTO_LOAD_NEXT:
+					this.model.AutoLoadNext();
+
+					break;
 				default:
 					break;
 			}

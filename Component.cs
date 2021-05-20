@@ -104,6 +104,21 @@ namespace hhpf
 					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA, this.DayTabs.SelectedIndex));
 
 					break;
+				case VIEW_ACTIONS.AUTO_LOAD_SUCCESS:
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_LOAD_NEXT, this.DayTabs.SelectedIndex));
+
+					break;
+				case VIEW_ACTIONS.AUTO_LOAD_LAST:
+					DataComponent dc = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
+					dc.Show();
+
+					break;
+				case VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS:
+					DataComponent dc2 = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
+					dc2.Show();
+
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_LOAD));
+					break;
 				default:
 					break;
 			}
@@ -115,14 +130,15 @@ namespace hhpf
 				for (int p = 0; p < pf.Length; p++)
 				{
 					ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
-					cv.Add(new ObservablePoint(0, 0));
+					// cv.Add(new ObservablePoint(0, 0));
 					pf[p].ForEach((pp) =>
 					{
 						cv.Add(new ObservablePoint(pp.wh, pp.frequency));
 					});
-					if(pf[p][pf[p].Count() - 1].wh < maxWh)
+					/*
+					if (pf[p][pf[p].Count() - 1].wh < maxWh)
 						cv.Add(new ObservablePoint(maxWh, 0));
-
+					*/
 					LineSeries ls = new LineSeries
 					{
 						Title = string.Format("{0}~{1}h Power Frequency", startHours, startHours + TimeSlotUtils.TimeSlotToHours(ts)),
@@ -174,6 +190,8 @@ namespace hhpf
 		private void SeasonTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_SEASON, (Season)e.TabPageIndex));
 		private void UIDSearch_Changed(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_KEYWORD, this.UIDSearch.Text));
 		private void DayTabs_Selected(object sender, TabControlEventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.CHANGE_DAY, (hhpf.Common.Day) e.TabPageIndex));
+
+		private void AutoLoadBtn_Click(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_LOAD));
 		private void AutoDrawBtn_Click(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_DRAW));
 		private void Visible_Toggled(object sender, EventArgs e)
 		{

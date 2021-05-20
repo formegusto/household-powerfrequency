@@ -23,6 +23,14 @@ namespace hhpf.Common
 		public const string AUTO_DRAW_FAILURE = "auto_draw/failure";
 		public const string AUTO_DRAW_LAST = "auto_draw/last";
 
+		public const string AUTO_LOAD = "auto_load";
+		public const string AUTO_LOAD_SUCCESS = "auto_load_success";
+		public const string AUTO_LOAD_FAILURE = "auto_load_failure";
+		public const string AUTO_LOAD_NEXT = "auto_load_next";
+		public const string AUTO_LOAD_NEXT_SUCCESS = "auto_load_next_success";
+		public const string AUTO_LOAD_NEXT_FAILURE = "auto_load_next_failure";
+		public const string AUTO_LOAD_LAST = "auto_load_last";
+
 		public const string REQUEST_DAYDATA = "request_daydata/pending";
 		public const string REQUEST_DAYDATA_SUCCESS = "request_daydata/success";
 		public const string REQUEST_DAYDATA_FAILURE = "request_daydata/failure";

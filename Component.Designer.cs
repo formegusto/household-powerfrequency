@@ -46,6 +46,8 @@
 			this.Fri = new MetroFramework.Controls.MetroTabPage();
 			this.Sat = new MetroFramework.Controls.MetroTabPage();
 			this.Footer = new MetroFramework.Controls.MetroPanel();
+			this.AutoLoadBtn = new MetroFramework.Controls.MetroButton();
+			this.AutoDrawBtn = new MetroFramework.Controls.MetroButton();
 			this.UID_Btn = new MetroFramework.Controls.MetroButton();
 			this.LoadBtn = new MetroFramework.Controls.MetroButton();
 			this.UIDSearch = new MetroFramework.Controls.MetroTextBox();
@@ -68,7 +70,6 @@
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
-			this.AutoDrawBtn = new MetroFramework.Controls.MetroButton();
 			this.Header.SuspendLayout();
 			this.SeasonPanel.SuspendLayout();
 			this.SeasonControlTabs.SuspendLayout();
@@ -349,6 +350,7 @@
 			// 
 			// Footer
 			// 
+			this.Footer.Controls.Add(this.AutoLoadBtn);
 			this.Footer.Controls.Add(this.AutoDrawBtn);
 			this.Footer.Controls.Add(this.UID_Btn);
 			this.Footer.Controls.Add(this.LoadBtn);
@@ -366,6 +368,30 @@
 			this.Footer.VerticalScrollbarBarColor = true;
 			this.Footer.VerticalScrollbarHighlightOnWheel = false;
 			this.Footer.VerticalScrollbarSize = 10;
+			// 
+			// AutoLoadBtn
+			// 
+			this.AutoLoadBtn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.AutoLoadBtn.Location = new System.Drawing.Point(420, 10);
+			this.AutoLoadBtn.Name = "AutoLoadBtn";
+			this.AutoLoadBtn.Size = new System.Drawing.Size(160, 30);
+			this.AutoLoadBtn.TabIndex = 6;
+			this.AutoLoadBtn.Text = "Auto Load";
+			this.AutoLoadBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.AutoLoadBtn.UseSelectable = true;
+			this.AutoLoadBtn.Click += new System.EventHandler(this.AutoLoadBtn_Click);
+			// 
+			// AutoDrawBtn
+			// 
+			this.AutoDrawBtn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.AutoDrawBtn.Location = new System.Drawing.Point(580, 10);
+			this.AutoDrawBtn.Name = "AutoDrawBtn";
+			this.AutoDrawBtn.Size = new System.Drawing.Size(160, 30);
+			this.AutoDrawBtn.TabIndex = 5;
+			this.AutoDrawBtn.Text = "Auto Draw";
+			this.AutoDrawBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.AutoDrawBtn.UseSelectable = true;
+			this.AutoDrawBtn.Click += new System.EventHandler(this.AutoDrawBtn_Click);
 			// 
 			// UID_Btn
 			// 
@@ -704,18 +730,7 @@
 			this.ChartContainer.VerticalScrollbarBarColor = true;
 			this.ChartContainer.VerticalScrollbarHighlightOnWheel = false;
 			this.ChartContainer.VerticalScrollbarSize = 10;
-			// 
-			// AutoDrawBtn
-			// 
-			this.AutoDrawBtn.Dock = System.Windows.Forms.DockStyle.Right;
-			this.AutoDrawBtn.Location = new System.Drawing.Point(580, 10);
-			this.AutoDrawBtn.Name = "AutoDrawBtn";
-			this.AutoDrawBtn.Size = new System.Drawing.Size(160, 30);
-			this.AutoDrawBtn.TabIndex = 5;
-			this.AutoDrawBtn.Text = "Auto Draw";
-			this.AutoDrawBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.AutoDrawBtn.UseSelectable = true;
-			this.AutoDrawBtn.Click += new System.EventHandler(this.AutoDrawBtn_Click);
+			this.ChartContainer.Click += new System.EventHandler(this.AutoDrawBtn_Click);
 			// 
 			// Component
 			// 
@@ -786,6 +801,7 @@
 		private MetroFramework.Controls.MetroTabPage All;
 		private MetroFramework.Controls.MetroButton UID_Btn;
 		private MetroFramework.Controls.MetroButton AutoDrawBtn;
+		private MetroFramework.Controls.MetroButton AutoLoadBtn;
 	}
 }
 

@@ -82,6 +82,12 @@
     <Compile Include="Atom\ClusterComponent.Designer.cs">
       <DependentUpon>ClusterComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Atom\DataComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Atom\DataComponent.Designer.cs">
+      <DependentUpon>DataComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Atom\UIDComponent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="View.cs" />
     <EmbeddedResource Include="Atom\ClusterComponent.resx">
       <DependentUpon>ClusterComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Atom\DataComponent.resx">
+      <DependentUpon>DataComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Atom\UIDComponent.resx">
       <DependentUpon>UIDComponent.cs</DependentUpon>

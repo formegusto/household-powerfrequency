@@ -35,6 +35,14 @@ namespace hhpf
 			this.keyword = k;
 		}
 
+		public ModelEventArgs(string a, string k,List<PowerFrequency>[] pf, TimeSlot ts)
+		{
+			this.action = a;
+			this.keyword = k;
+			this.powerFrequencies = pf;
+			this.timeslot = ts;
+		}
+
 		public ModelEventArgs(string a, DayData[] dd, List<PowerFrequency>[] pf, TimeSlot ts)
 		{
 			this.action = a;
@@ -65,7 +73,9 @@ namespace hhpf
 		void ChangeTimeslot(TimeSlot timeslot);
 		void ChangeSeason(Season season);
 		void AutoDraw();
-		void LoadExcel(bool isAuto=false);
+		void AutoLoad();
+		void AutoLoadNext();
+		void LoadExcel(bool isAuto=false, bool isAutoLoad=false);
 		void RequestDayData(bool isNotify = true);
 	}
 	public class DayClusterModel: IModel
@@ -77,6 +87,7 @@ namespace hhpf
 		public TimeSlot timeslot;
 		public Season season;
 		public int autoIdx;
+		public int autoCount;
 		public double maxWh;
 		public List<string> households;
 		public List<DayData>[] dayStore;
@@ -91,6 +102,7 @@ namespace hhpf
 			this.season = Season.ALL;
 			this.day = Day.SUN;
 			this.autoIdx = -1;
+			this.autoCount = 0;
 		}
 		public void Attach(IModelObserver imo)
 		{
@@ -132,7 +144,7 @@ namespace hhpf
 				}
 				sr.Close();
 			}
-			
+			/*
 			if(this.households.Count() - 1 <= autoIdx)
 			{
 				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_DRAW_LAST));
@@ -141,9 +153,83 @@ namespace hhpf
 				this.keyword = this.households[++autoIdx];
 				LoadExcel(true);
 			}
-			
+			*/
+			this.keyword = this.households[(new Random()).Next(0, this.households.Count() - 1)];
+			LoadExcel(true);
 		}
-		public async void LoadExcel(bool isAuto=false)
+
+		public void AutoLoad()
+		{
+			if (this.autoCount >= 10)
+				this.autoCount = 0;
+
+			this.changed.Invoke(this, new ModelEventArgs(COMMON_ACTIONS.START_LOADING));
+
+			if (this.households == null)
+			{
+				this.households = new List<string>();
+
+				string path = System.Windows.Forms.Application.StartupPath + @"\household_uid\household_uid.csv";
+				StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
+
+				while (!sr.EndOfStream)
+				{
+					string line = sr.ReadLine();
+					this.households.Add(line);
+				}
+				sr.Close();
+			}
+
+			this.keyword = this.households[(new Random()).Next(0, this.households.Count() - 1)];
+			LoadExcel(true, true);
+		}
+
+		public void AutoLoadNext()
+		{
+			int powerDistance = 100;
+			if (this.isLoaded)
+			{
+				List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
+
+				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++)
+					pfList[p] = new List<PowerFrequency>();
+				
+
+				for (int d = 0; d < this.dayStore[(int)this.day].Count; d++)
+				{
+					for (int t = 0; t < this.dayStore[(int)this.day][d].data.timeSlot.Length; t++)
+					{
+						PowerFrequency findPf = pfList[t].Find(
+							(pf) => pf.wh == Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance);
+
+						if (findPf == null)
+						{
+							pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(this.dayStore[(int)this.day][d].data.timeSlot[t] / 10) * 10) / powerDistance) * powerDistance));
+						}
+						else
+						{
+							findPf.IncFrequency();
+						}
+					}
+				}
+
+				for (int p = 0; p < this.dayStore[(int)this.day][0].data.timeSlot.Length; p++)
+				{
+					pfList[p].Sort();
+
+					if (pfList[p][pfList[p].Count() - 1].wh >= maxWh)
+						maxWh = pfList[p][pfList[p].Count() - 1].wh;
+				}
+
+				if (++this.autoCount >= 10)
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_LAST, this.keyword, this.powerFrequencies, this.timeslot));
+				else
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS, this.keyword, this.powerFrequencies, this.timeslot));
+
+			}
+		}
+
+		public async void LoadExcel(bool isAuto = false, bool isAutoLoad = false)
 		{
 			Console.WriteLine(string.Format("{0} {1} {2} ---- ExcelLoadStart", this.keyword.Trim(), this.season, this.timeslot));
 			this.dayStore = new List<DayData>[7];
@@ -194,7 +280,13 @@ namespace hhpf
 			if (!isAuto)
 				this.changed.Invoke(this, new ModelEventArgs(MODEL_ACTIONS.LOAD_EXCEL_SUCCESS));
 			else
-				this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_DRAW_SUCCESS, this.keyword.Trim()));
+			{
+				if (!isAutoLoad)
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_DRAW_SUCCESS, this.keyword.Trim()));
+				else
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_SUCCESS));
+			}
+				
 		}
 		public void RequestDayData(bool isNotify = true)
 		{
