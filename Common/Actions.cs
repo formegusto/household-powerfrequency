@@ -34,6 +34,10 @@ namespace hhpf.Common
 		public const string REQUEST_DAYDATA = "request_daydata/pending";
 		public const string REQUEST_DAYDATA_SUCCESS = "request_daydata/success";
 		public const string REQUEST_DAYDATA_FAILURE = "request_daydata/failure";
+
+		public const string REQUEST_SIMILARDATA = "request_similardata/pending";
+		public const string REQUEST_SIMILARDATA_SUCCESS = "request_similardata/success";
+		public const string REQUEST_SIMILARDATA_FAILURE = "request_similardata/failure";
 	}
 
 	public static class MODEL_ACTIONS

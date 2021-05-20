@@ -53,6 +53,10 @@ namespace hhpf
 					this.model.AutoLoadNext();
 
 					break;
+				case VIEW_ACTIONS.REQUEST_SIMILARDATA:
+					this.model.RequestSimilarData();
+
+					break;
 				default:
 					break;
 			}

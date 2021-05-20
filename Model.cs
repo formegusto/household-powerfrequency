@@ -77,6 +77,8 @@ namespace hhpf
 		void AutoLoadNext();
 		void LoadExcel(bool isAuto=false, bool isAutoLoad=false);
 		void RequestDayData(bool isNotify = true);
+
+		void RequestSimilarData();
 	}
 	public class DayClusterModel: IModel
 	{
@@ -263,6 +265,7 @@ namespace hhpf
 						if (clusterTmp != null && uid == this.keyword.Trim())
 						{
 							this.dayStore[DateUtils.DayToIndex(currentDay)].Add(new DayData(
+								currentDay,
 								clusterTmp,
 								new Data(line.Split(',').ToList())
 								)
@@ -368,6 +371,64 @@ namespace hhpf
 					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_DAYDATA_SUCCESS, this.dayStore[(int)this.day].ToArray(), this.powerFrequencies, this.clusterPowerFrequencies, this.timeslot, this.maxWh));
 					
 			}
+		}
+		public async void RequestSimilarData()
+		{
+			Console.WriteLine(string.Format("{0} {1} {2} ---- RequestSimilarData", this.keyword.Trim(), this.season, this.timeslot));
+
+			List<SimilarData> simData = new List<SimilarData>();
+
+			await Task.Run(async () =>
+			{
+				for (int d = 0; d < this.dayStore[(int)this.day].Count; d++)
+				{
+					string path = System.Windows.Forms.Application.StartupPath + @"\" + this.timeslot + @"\clustering_" + this.dayStore[(int)this.day][d].date.ToString("yyyyMMdd") + ".csv";
+					StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
+
+					while (!sr.EndOfStream)
+					{
+						string line = await sr.ReadLineAsync();
+						string uid = line.Split(',')[0];
+
+						if (uid.Contains("cluster") && uid == this.dayStore[(int)this.day][d].cluster.uid)
+						{
+							string dline = await sr.ReadLineAsync();
+							string duid = dline.Split(',')[0];
+
+							while(!duid.Contains("cluster"))
+							{
+								Console.WriteLine(duid);
+								if(duid != this.dayStore[(int)this.day][d].data.uid)
+								{
+									SimilarData findSim = simData.Find((s) => s.uid == duid);
+
+									if (findSim == null)
+									{
+										simData.Add(new SimilarData(duid));
+									}
+									else
+									{
+										findSim.IncFrequency();
+									}
+								}
+								
+								dline = await sr.ReadLineAsync();
+								duid = line.Split(',')[0];
+							}
+
+							break;
+						}
+					}
+					sr.Close();
+				}
+			});
+
+			simData.Sort();
+
+			simData.ForEach((sim) =>
+			{
+				Console.WriteLine(sim.ToString());
+			});
 		}
 	}
 }

@@ -70,6 +70,7 @@
 			this.Chart = new LiveCharts.WinForms.CartesianChart();
 			this.Spinner = new MetroFramework.Controls.MetroProgressSpinner();
 			this.ChartContainer = new MetroFramework.Controls.MetroPanel();
+			this.SimilarDataBtn = new MetroFramework.Controls.MetroButton();
 			this.Header.SuspendLayout();
 			this.SeasonPanel.SuspendLayout();
 			this.SeasonControlTabs.SuspendLayout();
@@ -350,6 +351,7 @@
 			// 
 			// Footer
 			// 
+			this.Footer.Controls.Add(this.SimilarDataBtn);
 			this.Footer.Controls.Add(this.AutoLoadBtn);
 			this.Footer.Controls.Add(this.AutoDrawBtn);
 			this.Footer.Controls.Add(this.UID_Btn);
@@ -732,6 +734,18 @@
 			this.ChartContainer.VerticalScrollbarSize = 10;
 			this.ChartContainer.Click += new System.EventHandler(this.AutoDrawBtn_Click);
 			// 
+			// SimilarDataBtn
+			// 
+			this.SimilarDataBtn.Dock = System.Windows.Forms.DockStyle.Right;
+			this.SimilarDataBtn.Location = new System.Drawing.Point(260, 10);
+			this.SimilarDataBtn.Name = "SimilarDataBtn";
+			this.SimilarDataBtn.Size = new System.Drawing.Size(160, 30);
+			this.SimilarDataBtn.TabIndex = 7;
+			this.SimilarDataBtn.Text = "SimilarData";
+			this.SimilarDataBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.SimilarDataBtn.UseSelectable = true;
+			this.SimilarDataBtn.Click += new System.EventHandler(this.SimilarDataBtn_Click);
+			// 
 			// Component
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -802,6 +816,7 @@
 		private MetroFramework.Controls.MetroButton UID_Btn;
 		private MetroFramework.Controls.MetroButton AutoDrawBtn;
 		private MetroFramework.Controls.MetroButton AutoLoadBtn;
+		private MetroFramework.Controls.MetroButton SimilarDataBtn;
 	}
 }
 

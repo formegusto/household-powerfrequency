@@ -36,7 +36,7 @@ namespace hhpf.Atom
 
 				LineSeries ls = new LineSeries
 				{
-					Title = string.Format("Cluster {0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
+					Title = string.Format(uid + " {0}~{1}h Power Frequency", startHours, startHours += TimeSlotUtils.TimeSlotToHours(ts)),
 					Values = cv
 				};
 

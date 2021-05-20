@@ -8,11 +8,13 @@ namespace hhpf.Entity
 {
 	public class DayData
 	{
+		public DateTime date;
 		public Data cluster;
 		public Data data;
 
-		public DayData(Data c, Data d)
+		public DayData(DateTime date, Data c, Data d)
 		{
+			this.date = date;
 			this.cluster = c;
 			this.data = d;
 		}
@@ -88,6 +90,38 @@ namespace hhpf.Entity
 			return String.Format("[Wh] {0}\n" +
 					"[Frequency] {1}\n",
 					this.wh, this.frequency
+				);
+		}
+	}
+
+	public class SimilarData : IComparable
+	{
+		public string uid;
+		public int frequency;
+
+		public SimilarData(string u)
+		{
+			this.uid = u;
+			this.frequency = 1;
+		}
+
+		public void IncFrequency()
+		{
+			this.frequency++;
+		}
+
+		public int CompareTo(object obj)
+		{
+			if (obj is SimilarData)
+				return this.frequency.CompareTo((obj as SimilarData).frequency) * (-1);
+			throw new ArgumentException("Object is not a SimilarData");
+		}
+
+		public String ToString()
+		{
+			return String.Format("[UID] {0}\n" +
+					"[Frequency] {1}\n",
+					this.uid, this.frequency
 				);
 		}
 	}

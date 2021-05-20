@@ -202,5 +202,7 @@ namespace hhpf
 				:
 				System.Windows.Visibility.Visible;
 		}
+
+		private void SimilarDataBtn_Click(object sender, EventArgs e) => this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_SIMILARDATA));
 	}
 }
