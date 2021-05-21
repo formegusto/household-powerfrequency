@@ -499,7 +499,7 @@ namespace hhpf
 						pfList[p].Sort();
 
 					// PowerFrequency 도 구성 끝!
-					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_SIMPF_SUCCESS, sm.uid, pfList, this.timeslot));
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_SIMPF_SUCCESS, string.Format("{0} ({1})", sm.uid, sm.frequency), pfList, this.timeslot));
 				});
 			});
 			

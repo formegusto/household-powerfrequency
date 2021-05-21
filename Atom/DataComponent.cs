@@ -29,6 +29,7 @@ namespace hhpf.Atom
 			for (int p = 0; p < pf.Length; p++)
 			{
 				ChartValues<ObservablePoint> cv = new ChartValues<ObservablePoint>();
+				// cv.Add(new ObservablePoint(0, 0));
 				pf[p].ForEach((pp) =>
 				{
 					cv.Add(new ObservablePoint(pp.wh, pp.frequency));
