@@ -20,6 +20,7 @@ namespace hhpf
 		public string keyword;
 		public double maxWh;
 		public DayData[] dayData;
+		public List<SimilarData> similarDatas;
 		public List<PowerFrequency>[] powerFrequencies;
 		public List<PowerFrequency>[] clusterPowerFrequencies;
 		public TimeSlot timeslot;
@@ -60,6 +61,12 @@ namespace hhpf
 			this.timeslot = ts;
 			this.maxWh = mw;
 		}
+
+		public ModelEventArgs(string a, List<SimilarData> sm)
+		{
+			this.action = a;
+			this.similarDatas = sm;
+		}
 	}
 	public interface IModelObserver
 	{
@@ -77,8 +84,8 @@ namespace hhpf
 		void AutoLoadNext();
 		void LoadExcel(bool isAuto=false, bool isAutoLoad=false);
 		void RequestDayData(bool isNotify = true);
-
 		void RequestSimilarData();
+		void RequestSimPf();
 	}
 	public class DayClusterModel: IModel
 	{
@@ -92,6 +99,7 @@ namespace hhpf
 		public int autoCount;
 		public double maxWh;
 		public List<string> households;
+		public List<SimilarData> similarDatas;
 		public List<DayData>[] dayStore;
 		public List<PowerFrequency>[] powerFrequencies;
 		public List<PowerFrequency>[] clusterPowerFrequencies;
@@ -293,7 +301,6 @@ namespace hhpf
 				else
 					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.AUTO_LOAD_SUCCESS));
 			}
-				
 		}
 		public void RequestDayData(bool isNotify = true)
 		{
@@ -425,10 +432,77 @@ namespace hhpf
 
 			simData.Sort();
 
+			/*
 			simData.ForEach((sim) =>
 			{
 				Console.WriteLine(sim.ToString());
 			});
+			*/
+
+			this.similarDatas = simData.Count() > 5 ? simData.GetRange(0, 5) : simData;
+
+			this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_SIMILARDATA_SUCCESS));
+		}
+		public async void RequestSimPf()
+		{
+			int powerDistance = 50;
+			await Task.Run(() =>
+			{
+				this.similarDatas.ForEach(async (sm) =>
+				{
+					List<Data> datas = new List<Data>();
+
+					for (int d = 0; d < this.dayStore[(int)this.day].Count; d++)
+					{
+						string path = System.Windows.Forms.Application.StartupPath + @"\" + this.timeslot + @"\clustering_" + this.dayStore[(int)this.day][d].date.ToString("yyyyMMdd") + ".csv";
+						StreamReader sr = new StreamReader(path, Encoding.GetEncoding("euc-kr"));
+
+						while (!sr.EndOfStream)
+						{
+							string line = await sr.ReadLineAsync();
+							string uid = line.Split(',')[0];
+							
+							if(uid == sm.uid)
+							{
+								datas.Add(new Data(line.Split(',').ToList()));
+								break;
+							}
+						}
+						sr.Close();
+					}
+
+					// datas 가 전부 만들어졌을 거임
+					List<PowerFrequency>[] pfList = new List<PowerFrequency>[TimeSlotUtils.TimeSlotToSize(this.timeslot)];
+					for (int p = 0; p < datas[0].timeSlot.Length; p++)
+					{
+						pfList[p] = new List<PowerFrequency>();
+					}
+					for (int d = 0; d < datas.Count; d++)
+					{
+						for (int t = 0; t < datas[d].timeSlot.Length; t++)
+						{
+							PowerFrequency findPf = pfList[t].Find(
+								(pf) => pf.wh == Math.Floor((Math.Round(datas[d].timeSlot[t] / 10) * 10) / powerDistance) * powerDistance);
+
+							if (findPf == null)
+							{
+								pfList[t].Add(new PowerFrequency(Math.Floor((Math.Round(datas[d].timeSlot[t] / 10) * 10) / powerDistance) * powerDistance));
+							}
+							else
+							{
+								findPf.IncFrequency();
+							}
+						}
+					}
+
+					for (int p = 0; p < datas[0].timeSlot.Length; p++)
+						pfList[p].Sort();
+
+					// PowerFrequency 도 구성 끝!
+					this.changed.Invoke(this, new ModelEventArgs(VIEW_ACTIONS.REQUEST_SIMPF_SUCCESS, sm.uid, pfList, this.timeslot));
+				});
+			});
+			
 		}
 	}
 }

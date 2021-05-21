@@ -109,15 +109,26 @@ namespace hhpf
 
 					break;
 				case VIEW_ACTIONS.AUTO_LOAD_LAST:
-					DataComponent dc = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
-					dc.Show();
+					DataComponent last_dc = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
+					last_dc.Show();
 
 					break;
 				case VIEW_ACTIONS.AUTO_LOAD_NEXT_SUCCESS:
-					DataComponent dc2 = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
-					dc2.Show();
+					DataComponent dc = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
+					dc.Show();
 
 					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.AUTO_LOAD));
+					break;
+				case VIEW_ACTIONS.REQUEST_SIMILARDATA_SUCCESS:
+					this.changed(this, new ViewEventArgs(VIEW_ACTIONS.REQUEST_SIMPF));
+
+					break;
+				case VIEW_ACTIONS.REQUEST_SIMPF_SUCCESS:
+					this.Invoke((System.Action)(() =>
+					   {
+						   DataComponent sim_dc = new DataComponent(e.keyword, e.powerFrequencies, e.timeslot);
+						   sim_dc.Show();
+					   }));
 					break;
 				default:
 					break;

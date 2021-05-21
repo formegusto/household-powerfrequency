@@ -38,6 +38,10 @@ namespace hhpf.Common
 		public const string REQUEST_SIMILARDATA = "request_similardata/pending";
 		public const string REQUEST_SIMILARDATA_SUCCESS = "request_similardata/success";
 		public const string REQUEST_SIMILARDATA_FAILURE = "request_similardata/failure";
+
+		public const string REQUEST_SIMPF = "request_simpf/pending";
+		public const string REQUEST_SIMPF_SUCCESS = "request_simpf/success";
+		public const string REQUEST_SIMPF_FAILURE = "request_simpf/failure";
 	}
 
 	public static class MODEL_ACTIONS

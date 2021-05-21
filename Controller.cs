@@ -57,6 +57,10 @@ namespace hhpf
 					this.model.RequestSimilarData();
 
 					break;
+				case VIEW_ACTIONS.REQUEST_SIMPF:
+					this.model.RequestSimPf();
+
+					break;
 				default:
 					break;
 			}
